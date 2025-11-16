@@ -1,0 +1,434 @@
+{
+  "BTC-USDT": {
+    "bp": {
+      "symbol": "BTC-USDT",
+      "strategy": "PMM Bar Portion",
+      "executor_count": 1990,
+      "filled_count": 4,
+      "elapsed_time": 388.9437141418457,
+      "summary": {
+        "net_pnl": 0.0,
+        "net_pnl_quote": 0.0,
+        "total_executors": 1990,
+        "total_executors_with_position": 0,
+        "total_volume": 0.0,
+        "total_long": 0,
+        "total_short": 0,
+        "close_types": {
+          "EARLY_STOP": 1986,
+          "TIME_LIMIT": 4
+        },
+        "accuracy_long": 0.0,
+        "accuracy_short": 0.0,
+        "total_positions": 0,
+        "accuracy": 0.0,
+        "max_drawdown_usd": 0.0,
+        "max_drawdown_pct": 0.0,
+        "sharpe_ratio": 0.0,
+        "profit_factor": 1.0,
+        "win_signals": 0,
+        "loss_signals": 0
+      }
+    },
+    "macd": {
+      "symbol": "BTC-USDT",
+      "strategy": "PMM Dynamic",
+      "executor_count": 10,
+      "filled_count": 4,
+      "elapsed_time": 142.63581490516663,
+      "summary": {
+        "net_pnl": 0.0,
+        "net_pnl_quote": 0.0,
+        "total_executors": 10,
+        "total_executors_with_position": 0,
+        "total_volume": 0.0,
+        "total_long": 0,
+        "total_short": 0,
+        "close_types": {
+          "EARLY_STOP": 6,
+          "TIME_LIMIT": 4
+        },
+        "accuracy_long": 0.0,
+        "accuracy_short": 0.0,
+        "total_positions": 0,
+        "accuracy": 0.0,
+        "max_drawdown_usd": 0.0,
+        "max_drawdown_pct": 0.0,
+        "sharpe_ratio": 0.0,
+        "profit_factor": 1.0,
+        "win_signals": 0,
+        "loss_signals": 0
+      }
+    }
+  },
+  "SOL-USDT": {
+    "bp": {
+      "symbol": "SOL-USDT",
+      "strategy": "PMM Bar Portion",
+      "executor_count": 20672,
+      "filled_count": 4,
+      "elapsed_time": 2075.1719286441803,
+      "summary": {
+        "net_pnl": 0.0,
+        "net_pnl_quote": 0.0,
+        "total_executors": 20672,
+        "total_executors_with_position": 0,
+        "total_volume": 0.0,
+        "total_long": 0,
+        "total_short": 0,
+        "close_types": {
+          "EARLY_STOP": 20668,
+          "TIME_LIMIT": 4
+        },
+        "accuracy_long": 0.0,
+        "accuracy_short": 0.0,
+        "total_positions": 0,
+        "accuracy": 0.0,
+        "max_drawdown_usd": 0.0,
+        "max_drawdown_pct": 0.0,
+        "sharpe_ratio": 0.0,
+        "profit_factor": 1.0,
+        "win_signals": 0,
+        "loss_signals": 0
+      }
+    },
+    "macd": {
+      "symbol": "SOL-USDT",
+      "strategy": "PMM Dynamic",
+      "executor_count": 4,
+      "filled_count": 4,
+      "elapsed_time": 88.38702392578125,
+      "summary": {
+        "net_pnl": 0.0,
+        "net_pnl_quote": 0.0,
+        "total_executors": 4,
+        "total_executors_with_position": 0,
+        "total_volume": 0.0,
+        "total_long": 0,
+        "total_short": 0,
+        "close_types": {
+          "TIME_LIMIT": 4
+        },
+        "accuracy_long": 0.0,
+        "accuracy_short": 0.0,
+        "total_positions": 0,
+        "accuracy": 0.0,
+        "max_drawdown_usd": 0.0,
+        "max_drawdown_pct": 0.0,
+        "sharpe_ratio": 0.0,
+        "profit_factor": 1.0,
+        "win_signals": 0,
+        "loss_signals": 0
+      }
+    }
+  },
+  "ETH-USDT": {
+    "bp": {
+      "symbol": "ETH-USDT",
+      "strategy": "PMM Bar Portion",
+      "executor_count": 20820,
+      "filled_count": 4,
+      "elapsed_time": 2037.635624885559,
+      "summary": {
+        "net_pnl": 0.0,
+        "net_pnl_quote": 0.0,
+        "total_executors": 20820,
+        "total_executors_with_position": 0,
+        "total_volume": 0.0,
+        "total_long": 0,
+        "total_short": 0,
+        "close_types": {
+          "EARLY_STOP": 20816,
+          "TIME_LIMIT": 4
+        },
+        "accuracy_long": 0.0,
+        "accuracy_short": 0.0,
+        "total_positions": 0,
+        "accuracy": 0.0,
+        "max_drawdown_usd": 0.0,
+        "max_drawdown_pct": 0.0,
+        "sharpe_ratio": 0.0,
+        "profit_factor": 1.0,
+        "win_signals": 0,
+        "loss_signals": 0
+      }
+    },
+    "macd": {
+      "symbol": "ETH-USDT",
+      "strategy": "PMM Dynamic",
+      "executor_count": 4,
+      "filled_count": 4,
+      "elapsed_time": 99.16712999343872,
+      "summary": {
+        "net_pnl": 0.0,
+        "net_pnl_quote": 0.0,
+        "total_executors": 4,
+        "total_executors_with_position": 0,
+        "total_volume": 0.0,
+        "total_long": 0,
+        "total_short": 0,
+        "close_types": {
+          "TIME_LIMIT": 4
+        },
+        "accuracy_long": 0.0,
+        "accuracy_short": 0.0,
+        "total_positions": 0,
+        "accuracy": 0.0,
+        "max_drawdown_usd": 0.0,
+        "max_drawdown_pct": 0.0,
+        "sharpe_ratio": 0.0,
+        "profit_factor": 1.0,
+        "win_signals": 0,
+        "loss_signals": 0
+      }
+    }
+  },
+  "XRP-USDT": {
+    "bp": {
+      "symbol": "XRP-USDT",
+      "strategy": "PMM Bar Portion",
+      "executor_count": 16360,
+      "filled_count": 4,
+      "elapsed_time": 1723.4527411460876,
+      "summary": {
+        "net_pnl": 0.0,
+        "net_pnl_quote": 0.0,
+        "total_executors": 16360,
+        "total_executors_with_position": 0,
+        "total_volume": 0.0,
+        "total_long": 0,
+        "total_short": 0,
+        "close_types": {
+          "EARLY_STOP": 16356,
+          "TIME_LIMIT": 4
+        },
+        "accuracy_long": 0.0,
+        "accuracy_short": 0.0,
+        "total_positions": 0,
+        "accuracy": 0.0,
+        "max_drawdown_usd": 0.0,
+        "max_drawdown_pct": 0.0,
+        "sharpe_ratio": 0.0,
+        "profit_factor": 1.0,
+        "win_signals": 0,
+        "loss_signals": 0
+      }
+    },
+    "macd": {
+      "symbol": "XRP-USDT",
+      "strategy": "PMM Dynamic",
+      "executor_count": 4,
+      "filled_count": 4,
+      "elapsed_time": 93.81414914131165,
+      "summary": {
+        "net_pnl": 0.0,
+        "net_pnl_quote": 0.0,
+        "total_executors": 4,
+        "total_executors_with_position": 0,
+        "total_volume": 0.0,
+        "total_long": 0,
+        "total_short": 0,
+        "close_types": {
+          "TIME_LIMIT": 4
+        },
+        "accuracy_long": 0.0,
+        "accuracy_short": 0.0,
+        "total_positions": 0,
+        "accuracy": 0.0,
+        "max_drawdown_usd": 0.0,
+        "max_drawdown_pct": 0.0,
+        "sharpe_ratio": 0.0,
+        "profit_factor": 1.0,
+        "win_signals": 0,
+        "loss_signals": 0
+      }
+    }
+  },
+  "AVAX-USDT": {
+    "bp": {
+      "symbol": "AVAX-USDT",
+      "strategy": "PMM Bar Portion",
+      "executor_count": 6874,
+      "filled_count": 4,
+      "elapsed_time": 754.4459788799286,
+      "summary": {
+        "net_pnl": 0.0,
+        "net_pnl_quote": 0.0,
+        "total_executors": 6874,
+        "total_executors_with_position": 0,
+        "total_volume": 0.0,
+        "total_long": 0,
+        "total_short": 0,
+        "close_types": {
+          "EARLY_STOP": 6870,
+          "TIME_LIMIT": 4
+        },
+        "accuracy_long": 0.0,
+        "accuracy_short": 0.0,
+        "total_positions": 0,
+        "accuracy": 0.0,
+        "max_drawdown_usd": 0.0,
+        "max_drawdown_pct": 0.0,
+        "sharpe_ratio": 0.0,
+        "profit_factor": 1.0,
+        "win_signals": 0,
+        "loss_signals": 0
+      }
+    },
+    "macd": {
+      "symbol": "AVAX-USDT",
+      "strategy": "PMM Dynamic",
+      "executor_count": 4,
+      "filled_count": 4,
+      "elapsed_time": 97.84177112579346,
+      "summary": {
+        "net_pnl": 0.0,
+        "net_pnl_quote": 0.0,
+        "total_executors": 4,
+        "total_executors_with_position": 0,
+        "total_volume": 0.0,
+        "total_long": 0,
+        "total_short": 0,
+        "close_types": {
+          "TIME_LIMIT": 4
+        },
+        "accuracy_long": 0.0,
+        "accuracy_short": 0.0,
+        "total_positions": 0,
+        "accuracy": 0.0,
+        "max_drawdown_usd": 0.0,
+        "max_drawdown_pct": 0.0,
+        "sharpe_ratio": 0.0,
+        "profit_factor": 1.0,
+        "win_signals": 0,
+        "loss_signals": 0
+      }
+    }
+  },
+  "DOT-USDT": {
+    "bp": {
+      "symbol": "DOT-USDT",
+      "strategy": "PMM Bar Portion",
+      "executor_count": 54262,
+      "filled_count": 4,
+      "elapsed_time": 3750.46844124794,
+      "summary": {
+        "net_pnl": 0.0,
+        "net_pnl_quote": 0.0,
+        "total_executors": 54262,
+        "total_executors_with_position": 0,
+        "total_volume": 0.0,
+        "total_long": 0,
+        "total_short": 0,
+        "close_types": {
+          "EARLY_STOP": 54258,
+          "STOP_LOSS": 2,
+          "TIME_LIMIT": 2
+        },
+        "accuracy_long": 0.0,
+        "accuracy_short": 0.0,
+        "total_positions": 0,
+        "accuracy": 0.0,
+        "max_drawdown_usd": 0.0,
+        "max_drawdown_pct": 0.0,
+        "sharpe_ratio": 0.0,
+        "profit_factor": 1.0,
+        "win_signals": 0,
+        "loss_signals": 0
+      }
+    },
+    "macd": {
+      "symbol": "DOT-USDT",
+      "strategy": "PMM Dynamic",
+      "executor_count": 4,
+      "filled_count": 4,
+      "elapsed_time": 94.07393264770508,
+      "summary": {
+        "net_pnl": 0.0,
+        "net_pnl_quote": 0.0,
+        "total_executors": 4,
+        "total_executors_with_position": 0,
+        "total_volume": 0.0,
+        "total_long": 0,
+        "total_short": 0,
+        "close_types": {
+          "TIME_LIMIT": 4
+        },
+        "accuracy_long": 0.0,
+        "accuracy_short": 0.0,
+        "total_positions": 0,
+        "accuracy": 0.0,
+        "max_drawdown_usd": 0.0,
+        "max_drawdown_pct": 0.0,
+        "sharpe_ratio": 0.0,
+        "profit_factor": 1.0,
+        "win_signals": 0,
+        "loss_signals": 0
+      }
+    }
+  },
+  "MYX-USDT": {
+    "bp": {
+      "symbol": "MYX-USDT",
+      "strategy": "PMM Bar Portion",
+      "executor_count": 19900,
+      "filled_count": 4,
+      "elapsed_time": 1703.376541852951,
+      "summary": {
+        "net_pnl": 0.0,
+        "net_pnl_quote": 0.0,
+        "total_executors": 19900,
+        "total_executors_with_position": 0,
+        "total_volume": 0.0,
+        "total_long": 0,
+        "total_short": 0,
+        "close_types": {
+          "EARLY_STOP": 19896,
+          "STOP_LOSS": 2,
+          "TIME_LIMIT": 2
+        },
+        "accuracy_long": 0.0,
+        "accuracy_short": 0.0,
+        "total_positions": 0,
+        "accuracy": 0.0,
+        "max_drawdown_usd": 0.0,
+        "max_drawdown_pct": 0.0,
+        "sharpe_ratio": 0.0,
+        "profit_factor": 1.0,
+        "win_signals": 0,
+        "loss_signals": 0
+      }
+    },
+    "macd": {
+      "symbol": "MYX-USDT",
+      "strategy": "PMM Dynamic",
+      "executor_count": 6,
+      "filled_count": 4,
+      "elapsed_time": 62.881306886672974,
+      "summary": {
+        "net_pnl": 0.0,
+        "net_pnl_quote": 0.0,
+        "total_executors": 6,
+        "total_executors_with_position": 0,
+        "total_volume": 0.0,
+        "total_long": 0,
+        "total_short": 0,
+        "close_types": {
+          "EARLY_STOP": 2,
+          "STOP_LOSS": 2,
+          "TIME_LIMIT": 2
+        },
+        "accuracy_long": 0.0,
+        "accuracy_short": 0.0,
+        "total_positions": 0,
+        "accuracy": 0.0,
+        "max_drawdown_usd": 0.0,
+        "max_drawdown_pct": 0.0,
+        "sharpe_ratio": 0.0,
+        "profit_factor": 1.0,
+        "win_signals": 0,
+        "loss_signals": 0
+      }
+    }
+  }
+}

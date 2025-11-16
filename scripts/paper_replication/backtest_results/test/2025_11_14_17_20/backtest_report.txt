@@ -1,0 +1,77 @@
+================================================================================
+Backtest Results Summary
+================================================================================
+
+Data Information:
+--------------------------------------------------------------------------------
+  PUMP-USDT:
+    Data Points: 545
+    Time Range: 2025-10-25 08:00:00 to 2025-10-31 00:00:00
+    Resolution: 15m
+
+Backtest Results:
+--------------------------------------------------------------------------------
+Symbol       Strategy             Executors    Filled     Fill Rate    Buy Fill     Sell Fill    PnL ($)      Return %    
+--------------------------------------------------------------------------------
+PUMP-USDT    PMM Simple           1009         161        15.96      % 16.27      % 15.64      % $393.99      3.94       %
+PUMP-USDT    PMM Dynamic (MACD)   190          78         41.05      % 1.79       % 97.44      % $450.81      4.51       %
+PUMP-USDT    PMM Bar Portion      246          102        41.46      % 1.37       % 100.00     % $16.25       0.16       %
+
+Detailed Metrics:
+--------------------------------------------------------------------------------
+
+PUMP-USDT - PMM Simple:
+  Total Executors: 1009
+  Filled Executors: 161 (15.96%)
+  Buy Orders: 504 (Filled: 82, Fill Rate: 16.27%)
+  Sell Orders: 505 (Filled: 79, Fill Rate: 15.64%)
+  Total PnL: $393.99
+  Total Volume: $805,207.86
+  Turnover Return: 0.049%
+  Return %: 3.94%
+  Buy PnL: $-490.84
+  Sell PnL: $884.83
+  Total Orders: 1009
+  Cancelled Orders: 848
+  Daily Volume: $134,201.31
+  Daily Return: $65.66
+  Max Position Value: $5,203.85
+  Backtest Time: 2.8s (0.0min)
+
+PUMP-USDT - PMM Dynamic (MACD):
+  Total Executors: 190
+  Filled Executors: 78 (41.05%)
+  Buy Orders: 112 (Filled: 2, Fill Rate: 1.79%)
+  Sell Orders: 78 (Filled: 76, Fill Rate: 97.44%)
+  Total PnL: $450.81
+  Total Volume: $445,604.17
+  Turnover Return: 0.101%
+  Return %: 4.51%
+  Buy PnL: $-28.45
+  Sell PnL: $479.26
+  Total Orders: 190
+  Cancelled Orders: 112
+  Daily Volume: $74,267.36
+  Daily Return: $75.14
+  Max Position Value: $6,132.84
+  Backtest Time: 0.9s (0.0min)
+
+PUMP-USDT - PMM Bar Portion:
+  Total Executors: 246
+  Filled Executors: 102 (41.46%)
+  Buy Orders: 146 (Filled: 2, Fill Rate: 1.37%)
+  Sell Orders: 100 (Filled: 100, Fill Rate: 100.00%)
+  Total PnL: $16.25
+  Total Volume: $580,585.73
+  Turnover Return: 0.003%
+  Return %: 0.16%
+  Buy PnL: $161.60
+  Sell PnL: $-145.35
+  Total Orders: 246
+  Cancelled Orders: 144
+  Daily Volume: $96,764.29
+  Daily Return: $2.71
+  Max Position Value: $6,171.93
+  Backtest Time: 1.1s (0.0min)
+
+================================================================================

@@ -1,0 +1,150 @@
+{
+  "start_date": "2025-10-11",
+  "end_date": "2025-11-11",
+  "trading_pairs": [
+    "BTC-USDT",
+    "SOL-USDT",
+    "ETH-USDT"
+  ],
+  "results": [
+    {
+      "symbol": "BTC-USDT",
+      "data_count": 44161,
+      "strategies": {
+        "bp": {
+          "total_executors": 2610,
+          "filled_executors": 4,
+          "pnl_attribution": {
+            "total_pnl": 0.0,
+            "long_pnl": 0.0,
+            "short_pnl": 0.0,
+            "by_close_type": {
+              "CloseType.EARLY_STOP": 0.0,
+              "CloseType.TIME_LIMIT": 0.0
+            },
+            "by_duration": {
+              "0.0-10.0\u5206\u949f": 0.0,
+              "44140.0-44150.0\u5206\u949f": 0.0,
+              "35020.0-35030.0\u5206\u949f": 0.0
+            },
+            "winning_trades": 0,
+            "losing_trades": 0,
+            "break_even_trades": 2610
+          }
+        },
+        "macd": {
+          "total_executors": 6,
+          "filled_executors": 4,
+          "pnl_attribution": {
+            "total_pnl": 0.0,
+            "long_pnl": 0.0,
+            "short_pnl": 0.0,
+            "by_close_type": {
+              "CloseType.EARLY_STOP": 0.0,
+              "CloseType.TIME_LIMIT": 0.0
+            },
+            "by_duration": {
+              "0.0-10.0\u5206\u949f": 0.0,
+              "44140.0-44150.0\u5206\u949f": 0.0
+            },
+            "winning_trades": 0,
+            "losing_trades": 0,
+            "break_even_trades": 6
+          }
+        }
+      }
+    },
+    {
+      "symbol": "SOL-USDT",
+      "data_count": 44161,
+      "strategies": {
+        "bp": {
+          "total_executors": 9728,
+          "filled_executors": 4,
+          "pnl_attribution": {
+            "total_pnl": 0.0,
+            "long_pnl": 0.0,
+            "short_pnl": 0.0,
+            "by_close_type": {
+              "CloseType.EARLY_STOP": 0.0,
+              "CloseType.TIME_LIMIT": 0.0
+            },
+            "by_duration": {
+              "0.0-10.0\u5206\u949f": 0.0,
+              "44140.0-44150.0\u5206\u949f": 0.0,
+              "10110.0-10120.0\u5206\u949f": 0.0
+            },
+            "winning_trades": 0,
+            "losing_trades": 0,
+            "break_even_trades": 9728
+          }
+        },
+        "macd": {
+          "total_executors": 4,
+          "filled_executors": 4,
+          "pnl_attribution": {
+            "total_pnl": 0.0,
+            "long_pnl": 0.0,
+            "short_pnl": 0.0,
+            "by_close_type": {
+              "CloseType.STOP_LOSS": 0.0,
+              "CloseType.TIME_LIMIT": 0.0
+            },
+            "by_duration": {
+              "44140.0-44150.0\u5206\u949f": 0.0
+            },
+            "winning_trades": 0,
+            "losing_trades": 0,
+            "break_even_trades": 4
+          }
+        }
+      }
+    },
+    {
+      "symbol": "ETH-USDT",
+      "data_count": 44161,
+      "strategies": {
+        "bp": {
+          "total_executors": 9974,
+          "filled_executors": 4,
+          "pnl_attribution": {
+            "total_pnl": 0.0,
+            "long_pnl": 0.0,
+            "short_pnl": 0.0,
+            "by_close_type": {
+              "CloseType.EARLY_STOP": 0.0,
+              "CloseType.TIME_LIMIT": 0.0
+            },
+            "by_duration": {
+              "0.0-10.0\u5206\u949f": 0.0,
+              "44140.0-44150.0\u5206\u949f": 0.0,
+              "9250.0-9260.0\u5206\u949f": 0.0
+            },
+            "winning_trades": 0,
+            "losing_trades": 0,
+            "break_even_trades": 9974
+          }
+        },
+        "macd": {
+          "total_executors": 4,
+          "filled_executors": 4,
+          "pnl_attribution": {
+            "total_pnl": 0.0,
+            "long_pnl": 0.0,
+            "short_pnl": 0.0,
+            "by_close_type": {
+              "CloseType.STOP_LOSS": 0.0,
+              "CloseType.TIME_LIMIT": 0.0
+            },
+            "by_duration": {
+              "44140.0-44150.0\u5206\u949f": 0.0
+            },
+            "winning_trades": 0,
+            "losing_trades": 0,
+            "break_even_trades": 4
+          }
+        }
+      }
+    }
+  ]
+}

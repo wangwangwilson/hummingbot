@@ -1,0 +1,72 @@
+{
+  "start_date": "2025-10-25",
+  "end_date": "2025-10-30",
+  "trading_pair": "PUMP-USDT",
+  "backtest_resolution": "15m",
+  "plot_frequency": "3min",
+  "environment": "test",
+  "trading_fees": {
+    "maker_fee": 0.0,
+    "taker_fee": 0.0002,
+    "maker_fee_pct": 0.0,
+    "taker_fee_pct": 0.02,
+    "maker_fee_wan": 0.0,
+    "taker_fee_wan": 2.0
+  },
+  "data_info": {
+    "trading_pair": "PUMP-USDT",
+    "data_points": 449,
+    "actual_start": "2025-10-25 08:00:00",
+    "actual_end": "2025-10-30 00:00:00",
+    "backtest_resolution": "15m"
+  },
+  "results": [
+    {
+      "trading_pair": "PUMP-USDT",
+      "strategy_key": "PMM_Simple",
+      "strategy_name": "PMM Simple",
+      "success": true,
+      "elapsed_time": 2.3380391597747803,
+      "total_executors": 835,
+      "filled_executors": 124,
+      "fill_rate": 0.14850299401197606,
+      "buy_orders": 419,
+      "sell_orders": 416,
+      "buy_filled": 58,
+      "sell_filled": 66,
+      "buy_fill_rate": 0.13842482100238662,
+      "sell_fill_rate": 0.15865384615384615,
+      "total_pnl": 1248.8050614108126,
+      "total_volume": 620183.3509814884,
+      "turnover_return": 0.20136062334380334,
+      "return_pct": 12.488050614108126,
+      "buy_pnl": 177.61053862193683,
+      "sell_pnl": 1071.194522788876,
+      "total_orders": 835,
+      "cancelled_orders": 711,
+      "daily_volume": 124036.67019629767,
+      "daily_pnl": 249.76101228216254,
+      "daily_return": 20.136062334380334,
+      "max_position_value": 5137.084948862852,
+      "max_long_position_value": 4999.4996839466885,
+      "max_short_position_value": 5137.084948862852,
+      "maker_fee_paid": 0.0,
+      "taker_fee_paid": 124.03667019629768
+    },
+    {
+      "trading_pair": "PUMP-USDT",
+      "strategy_key": "PMM_Dynamic",
+      "strategy_name": "PMM Dynamic (MACD)",
+      "success": false,
+      "error": "1 validation error for CandlesConfig\nmax_records\n  Input should be a valid integer [type=int_type, input_value=None, input_type=NoneType]\n    For further information visit https://errors.pydantic.dev/2.12/v/int_type"
+    },
+    {
+      "trading_pair": "PUMP-USDT",
+      "strategy_key": "PMM_Bar_Portion",
+      "strategy_name": "PMM Bar Portion",
+      "success": false,
+      "error": "1 validation error for CandlesConfig\nmax_records\n  Input should be a valid integer [type=int_type, input_value=None, input_type=NoneType]\n    For further information visit https://errors.pydantic.dev/2.12/v/int_type"
+    }
+  ],
+  "total_time": 4.843033790588379
+}

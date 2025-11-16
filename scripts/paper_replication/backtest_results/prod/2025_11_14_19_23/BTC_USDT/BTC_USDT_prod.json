@@ -1,0 +1,72 @@
+{
+  "start_date": "2025-01-01",
+  "end_date": "2025-11-09",
+  "trading_pair": "BTC-USDT",
+  "backtest_resolution": "15m",
+  "plot_frequency": "3min",
+  "environment": "prod",
+  "trading_fees": {
+    "maker_fee": 0.0,
+    "taker_fee": 0.0002,
+    "maker_fee_pct": 0.0,
+    "taker_fee_pct": 0.02,
+    "maker_fee_wan": 0.0,
+    "taker_fee_wan": 2.0
+  },
+  "data_info": {
+    "trading_pair": "BTC-USDT",
+    "data_points": 29921,
+    "actual_start": "2025-01-01 08:00:00",
+    "actual_end": "2025-11-09 00:00:00",
+    "backtest_resolution": "15m"
+  },
+  "results": [
+    {
+      "trading_pair": "BTC-USDT",
+      "strategy_key": "PMM_Simple",
+      "strategy_name": "PMM Simple",
+      "success": true,
+      "elapsed_time": 775.2108452320099,
+      "total_executors": 59532,
+      "filled_executors": 618,
+      "fill_rate": 0.010380971578310824,
+      "buy_orders": 29765,
+      "sell_orders": 29767,
+      "buy_filled": 312,
+      "sell_filled": 306,
+      "buy_fill_rate": 0.0104821098605745,
+      "sell_fill_rate": 0.010279840091376356,
+      "total_pnl": -1775.796278715982,
+      "total_volume": 3089712.6397654223,
+      "turnover_return": -0.05747448017854516,
+      "return_pct": -17.75796278715982,
+      "buy_pnl": -286.1765098651344,
+      "sell_pnl": -1489.6197688508478,
+      "total_orders": 59532,
+      "cancelled_orders": 58914,
+      "daily_volume": 9902.925127453276,
+      "daily_pnl": -5.691654739474301,
+      "daily_return": -5.7474480178545155,
+      "max_position_value": 5111.331179278446,
+      "max_long_position_value": 4999.989118499007,
+      "max_short_position_value": 5111.331179278446,
+      "maker_fee_paid": 0.0,
+      "taker_fee_paid": 617.9425279530846
+    },
+    {
+      "trading_pair": "BTC-USDT",
+      "strategy_key": "PMM_Dynamic",
+      "strategy_name": "PMM Dynamic (MACD)",
+      "success": false,
+      "error": "1 validation error for CandlesConfig\nmax_records\n  Input should be a valid integer [type=int_type, input_value=None, input_type=NoneType]\n    For further information visit https://errors.pydantic.dev/2.12/v/int_type"
+    },
+    {
+      "trading_pair": "BTC-USDT",
+      "strategy_key": "PMM_Bar_Portion",
+      "strategy_name": "PMM Bar Portion",
+      "success": false,
+      "error": "1 validation error for CandlesConfig\nmax_records\n  Input should be a valid integer [type=int_type, input_value=None, input_type=NoneType]\n    For further information visit https://errors.pydantic.dev/2.12/v/int_type"
+    }
+  ],
+  "total_time": 799.8953199386597
+}
