@@ -49,6 +49,20 @@ portfolio_value.csv
 debug.log
 /installation/docker-commands/hummingbot_files
 
+# Large data files
+*.csv
+*.parquet
+*.parq
+*.h5
+*.hdf5
+*.feather
+*.arrow
+*.xlsx
+*.xls
+*.db
+*.sqlite
+*.sqlite3
+
 # Distribution files
 /build
 /dist
