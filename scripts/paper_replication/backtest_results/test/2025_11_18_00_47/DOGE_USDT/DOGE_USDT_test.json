@@ -1,0 +1,60 @@
+{
+  "start_date": "2024-03-01",
+  "end_date": "2025-01-31",
+  "trading_pair": "DOGE-USDT",
+  "backtest_resolution": "1m",
+  "plot_frequency": "3min",
+  "environment": "test",
+  "trading_fees": {
+    "maker_fee": 0.0,
+    "taker_fee": 0.0002,
+    "maker_fee_pct": 0.0,
+    "taker_fee_pct": 0.02,
+    "maker_fee_wan": 0.0,
+    "taker_fee_wan": 2.0
+  },
+  "data_info": {
+    "trading_pair": "DOGE-USDT",
+    "data_points": 483361,
+    "actual_start": "2024-03-01 08:00:00",
+    "actual_end": "2025-01-31 00:00:00",
+    "backtest_resolution": "1m"
+  },
+  "results": [
+    {
+      "trading_pair": "DOGE-USDT",
+      "strategy_key": "PMM_Bar_Portion_Optimal",
+      "strategy_name": "PMM Bar Portion (Optimal Params)",
+      "success": true,
+      "elapsed_time": 27867.793209314346,
+      "total_executors": 35763,
+      "filled_executors": 8385,
+      "fill_rate": 0.23446019629225737,
+      "buy_orders": 30279,
+      "sell_orders": 5484,
+      "buy_filled": 2901,
+      "sell_filled": 5484,
+      "buy_fill_rate": 0.09580897651837908,
+      "sell_fill_rate": 1.0,
+      "total_pnl": -19676.8983605314,
+      "total_volume": 42013623.837045774,
+      "turnover_return": -0.04683456594187234,
+      "return_pct": -196.768983605314,
+      "buy_pnl": 4846.3509503060295,
+      "sell_pnl": -24523.2493108376,
+      "total_orders": 35763,
+      "cancelled_orders": 27378,
+      "daily_volume": 125040.54713406481,
+      "daily_pnl": -58.562197501581544,
+      "daily_return": -4.683456594187233,
+      "max_position_value": 5019.577902384161,
+      "max_long_position_value": 4999.994010297883,
+      "max_short_position_value": 5019.577902384161,
+      "maker_volume": 42013623.837045774,
+      "taker_volume": 0.0,
+      "maker_fee_paid": 0.0,
+      "taker_fee_paid": 0.0
+    }
+  ],
+  "total_time": 28282.178159475327
+}

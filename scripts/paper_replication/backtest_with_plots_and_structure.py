@@ -32,8 +32,11 @@ if cert_file.exists():
 
 # Add project paths
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
-tradingview_ai_path = Path("/Users/wilson/Desktop/tradingview-ai")
-sys.path.insert(0, str(tradingview_ai_path))
+# 数据路径已迁移到新位置
+# 如果需要使用 BinancePublicDataManager，需要设置环境变量或修改其配置
+# 当前数据路径: /mnt/hdd/bigdata/binance_klines/data/futures/um
+# tradingview_ai_path = Path("/Users/wilson/Desktop/tradingview-ai")
+# sys.path.insert(0, str(tradingview_ai_path))
 
 # Temporary disable ccxt
 class FakeCCXT:
@@ -53,9 +56,11 @@ from hummingbot.core.data_type.common import TradeType
 from backtest_comparison_local import LocalBinanceDataProvider, LocalBacktestingDataProvider
 
 # Production run parameters
-TRADING_PAIRS = ["BTC-USDT", "ETH-USDT", "PUMP-USDT"]
-START_DATE = datetime(2025, 9, 1)
-END_DATE = datetime(2025, 9, 21)
+# 使用最优参数回测：DOGE品种，2024-03-01到2025-01-31（实际可用数据范围）
+# 注意：用户要求2025-03-01到2025-11-09，但数据只到2025-02-01，使用最接近的可用范围
+TRADING_PAIRS = ["DOGE-USDT"]
+START_DATE = datetime(2024, 3, 1)
+END_DATE = datetime(2025, 1, 31)
 INITIAL_PORTFOLIO_USD = 10000
 MAKER_FEE = 0.0  # Maker手续费：0（免手续费）
 TAKER_FEE = 0.0002  # Taker手续费：万2（0.02%）
@@ -64,7 +69,21 @@ RESAMPLE_INTERVAL: Optional[str] = None  # 不重采样，直接使用1分钟数
 PLOT_FREQUENCY = "3min"  # 画图频率：3分钟
 USE_MULTIPROCESSING = True  # 使用joblib多进程并行
 N_JOBS = -1  # -1表示使用所有CPU核心
-ENVIRONMENT = "prod"  # 正式输出
+ENVIRONMENT = "test"  # 测试环境
+
+# 最优参数（来自optimization_results_incremental.json，Trial 26）
+OPTIMAL_PARAMS = {
+    "buy_spreads": [0.02, 0.03],
+    "sell_spreads": [0.02, 0.04],
+    "stop_loss": Decimal("0.03"),
+    "take_profit": Decimal("0.02"),
+    "time_limit": 4500,
+    "natr_length": 20,
+    "atr_length": 10,
+    "training_window": 60,
+    "buy_amounts_pct": [Decimal("0.5"), Decimal("0.5")],
+    "sell_amounts_pct": [Decimal("0.5"), Decimal("0.5")],
+}
 
 
 def create_output_directory(environment: str = "test") -> Path:
@@ -92,7 +111,8 @@ def create_output_directory(environment: str = "test") -> Path:
 
 def generate_equity_curve(executors: List, start_ts: int, end_ts: int, 
                           initial_portfolio: float, frequency: str = "3min",
-                          filled_executors: Optional[List] = None) -> pd.DataFrame:
+                          filled_executors: Optional[List] = None,
+                          maker_volume: float = 0.0, taker_volume: float = 0.0) -> pd.DataFrame:
     """
     生成权益曲线、仓位曲线和PnL曲线（指定频率）
     """
@@ -121,13 +141,25 @@ def generate_equity_curve(executors: List, start_ts: int, end_ts: int,
         # 获取时间戳
         open_ts = None
         close_ts = None
+        is_active = True  # 默认假设还在运行
         
         if hasattr(executor, 'config') and hasattr(executor.config, 'timestamp'):
             open_ts = executor.config.timestamp
-        if hasattr(executor, 'close_timestamp'):
-            close_ts = executor.close_timestamp
-        elif hasattr(executor, 'config') and hasattr(executor.config, 'close_timestamp'):
-            close_ts = executor.config.close_timestamp
+        
+        # 检查executor是否还在运行
+        if hasattr(executor, 'is_active'):
+            is_active = executor.is_active
+        elif hasattr(executor, 'status'):
+            # 如果status是TERMINATED，说明已经平仓
+            from hummingbot.strategy_v2.models.executors import RunnableStatus
+            is_active = executor.status != RunnableStatus.TERMINATED
+        
+        # 只有已经平仓的executor才有close_timestamp
+        if not is_active:
+            if hasattr(executor, 'close_timestamp'):
+                close_ts = executor.close_timestamp
+            elif hasattr(executor, 'config') and hasattr(executor.config, 'close_timestamp'):
+                close_ts = executor.config.close_timestamp
         
         if open_ts is None:
             continue
@@ -157,13 +189,29 @@ def generate_equity_curve(executors: List, start_ts: int, end_ts: int,
         })
         
         # 平仓事件
-        if close_ts and close_ts > open_ts:
+        if not is_active and close_ts and close_ts > open_ts:
+            # Executor已经平仓
             pnl = 0.0
             if hasattr(executor, 'net_pnl_quote') and executor.net_pnl_quote:
                 pnl = float(executor.net_pnl_quote)
             
             events.append({
                 'timestamp': close_ts,
+                'type': 'close',
+                'side': side,
+                'price': entry_price,
+                'position_value': position_value,
+                'pnl': pnl,
+            })
+        elif is_active:
+            # Executor还在运行，在回测结束时平仓（使用end_ts）
+            # 这样可以确保所有仓位在回测结束时都被平仓
+            pnl = 0.0
+            if hasattr(executor, 'net_pnl_quote') and executor.net_pnl_quote:
+                pnl = float(executor.net_pnl_quote)
+            
+            events.append({
+                'timestamp': end_ts,  # 使用回测结束时间
                 'type': 'close',
                 'side': side,
                 'price': entry_price,
@@ -193,12 +241,42 @@ def generate_equity_curve(executors: List, start_ts: int, end_ts: int,
     equity_curve['position_value'] = 0.0
     equity_curve['cumulative_pnl'] = 0.0
     equity_curve['equity'] = float(initial_portfolio)
+    equity_curve['cumulative_maker_volume'] = 0.0
+    equity_curve['cumulative_taker_volume'] = 0.0
     
     # 处理事件以构建仓位和PnL曲线
     current_long_position = 0.0
     current_short_position = 0.0
     cumulative_pnl = 0.0
+    cumulative_maker_vol = 0.0
+    cumulative_taker_vol = 0.0
     event_idx = 0
+    
+    # 收集所有成交事件，用于计算累积交易额
+    volume_events = []
+    for executor in filled_executors:
+        volume = float(executor.filled_amount_quote) if hasattr(executor, 'filled_amount_quote') and executor.filled_amount_quote else 0.0
+        if volume > 0:
+            open_ts = None
+            if hasattr(executor, 'config') and hasattr(executor.config, 'timestamp'):
+                open_ts = executor.config.timestamp
+            
+            if open_ts:
+                # 判断是maker还是taker
+                is_maker = False
+                if hasattr(executor, 'config') and hasattr(executor.config, 'triple_barrier_config'):
+                    order_type = executor.config.triple_barrier_config.open_order_type
+                    if order_type and hasattr(order_type, 'is_limit_type') and order_type.is_limit_type():
+                        is_maker = True
+                
+                volume_events.append({
+                    'timestamp': open_ts,
+                    'volume': volume,
+                    'is_maker': is_maker
+                })
+    
+    volume_events.sort(key=lambda x: x['timestamp'])
+    volume_event_idx = 0
     
     for idx in equity_curve.index:
         idx_ts = int(idx.timestamp())
@@ -221,6 +299,18 @@ def generate_equity_curve(executors: List, start_ts: int, end_ts: int,
             else:
                 break
         
+        # 处理交易额事件
+        while volume_event_idx < len(volume_events):
+            vol_event = volume_events[volume_event_idx]
+            if vol_event['timestamp'] <= idx_ts:
+                if vol_event['is_maker']:
+                    cumulative_maker_vol += vol_event['volume']
+                else:
+                    cumulative_taker_vol += vol_event['volume']
+                volume_event_idx += 1
+            else:
+                break
+        
         # 更新此时间戳的权益曲线
         # 保留正负号：正数表示多头，负数表示空头
         total_position = current_long_position - current_short_position
@@ -229,6 +319,8 @@ def generate_equity_curve(executors: List, start_ts: int, end_ts: int,
         equity_curve.loc[idx, 'position_value'] = float(total_position)  # 保留正负号，不再使用绝对值
         equity_curve.loc[idx, 'cumulative_pnl'] = float(cumulative_pnl)
         equity_curve.loc[idx, 'equity'] = float(initial_portfolio + cumulative_pnl)
+        equity_curve.loc[idx, 'cumulative_maker_volume'] = float(cumulative_maker_vol)
+        equity_curve.loc[idx, 'cumulative_taker_volume'] = float(cumulative_taker_vol)
     
     return equity_curve
 
@@ -288,9 +380,14 @@ def generate_plots(result: Dict, output_dir: Path, trading_pair: str, strategy_n
         if hasattr(e, 'filled_amount_quote') and e.filled_amount_quote and float(e.filled_amount_quote) > 0
     ]
     
+    # 计算maker和taker成交额
+    maker_volume = result.get('maker_volume', 0.0)
+    taker_volume = result.get('taker_volume', 0.0)
+    
     # 生成权益曲线（3分钟频率）
     equity_curve = generate_equity_curve(
-        executors, start_ts, end_ts, initial_portfolio, PLOT_FREQUENCY, filled_executors=filled_executors)
+        executors, start_ts, end_ts, initial_portfolio, PLOT_FREQUENCY, 
+        filled_executors=filled_executors, maker_volume=maker_volume, taker_volume=taker_volume)
     
     # 生成挂单曲线
     order_curve = generate_order_curves(executors)
@@ -364,11 +461,21 @@ def generate_plots(result: Dict, output_dir: Path, trading_pair: str, strategy_n
     fig = plt.figure(figsize=(20, 16))
     gs = fig.add_gridspec(4, 2, hspace=0.3, wspace=0.3)
     
-    # 1. 仓位价值曲线（保留正负号）
+    # 1. 仓位价值曲线（保留正负号，使用填充显示多空）
     ax1 = fig.add_subplot(gs[0, :])
     if not equity_curve.empty:
+        # 绘制仓位价值曲线
         ax1.plot(equity_curve.index, equity_curve['position_value'], 
-                label='Position Value (Long=+, Short=-)', color='#1f77b4', linewidth=1.5)
+                label='Net Position Value (Long=+, Short=-)', color='#1f77b4', linewidth=1.5)
+        
+        # 填充正负区域，更清楚地显示多空交替
+        ax1.fill_between(equity_curve.index, 0, equity_curve['position_value'], 
+                        where=(equity_curve['position_value'] > 0), 
+                        alpha=0.3, color='green', label='Long Position')
+        ax1.fill_between(equity_curve.index, 0, equity_curve['position_value'], 
+                        where=(equity_curve['position_value'] < 0), 
+                        alpha=0.3, color='red', label='Short Position')
+        
         ax1.axhline(y=0, color='black', linestyle='--', linewidth=1, alpha=0.5)
         ax1.set_ylabel('Position Value (USD)', fontsize=12)
         ax1.set_title('Position Value Over Time (Positive=Long, Negative=Short)', fontsize=14, fontweight='bold')
@@ -377,18 +484,36 @@ def generate_plots(result: Dict, output_dir: Path, trading_pair: str, strategy_n
         ax1.xaxis.set_major_locator(mdates.DayLocator(interval=1))
         ax1.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m-%d'))
     
-    # 2. 累积盈亏曲线
+    # 2. 累积盈亏曲线 + Maker/Taker累积交易额（双y轴）
     ax2 = fig.add_subplot(gs[1, :])
     if not equity_curve.empty:
+        # 左y轴：累积盈亏
         ax2.plot(equity_curve.index, equity_curve['cumulative_pnl'], 
                 label='Cumulative PnL', color='#2ca02c', linewidth=1.5)
         ax2.axhline(y=0, color='black', linestyle='--', linewidth=1, alpha=0.5)
-        ax2.set_ylabel('Cumulative PnL (USD)', fontsize=12)
-        ax2.set_title('Cumulative PnL Over Time', fontsize=14, fontweight='bold')
-        ax2.legend(loc='upper left')
+        ax2.set_ylabel('Cumulative PnL (USD)', fontsize=12, color='#2ca02c')
+        ax2.tick_params(axis='y', labelcolor='#2ca02c')
+        ax2.set_title('Cumulative PnL and Trading Volume Over Time', fontsize=14, fontweight='bold')
         ax2.grid(True, alpha=0.3)
         ax2.xaxis.set_major_locator(mdates.DayLocator(interval=1))
         ax2.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m-%d'))
+        
+        # 右y轴：Maker/Taker累积交易额
+        if 'cumulative_maker_volume' in equity_curve.columns and 'cumulative_taker_volume' in equity_curve.columns:
+            ax2b = ax2.twinx()
+            ax2b.plot(equity_curve.index, equity_curve['cumulative_maker_volume'], 
+                      label='Cumulative Maker Volume', color='#1f77b4', linewidth=1.5, linestyle='--', alpha=0.7)
+            ax2b.plot(equity_curve.index, equity_curve['cumulative_taker_volume'], 
+                      label='Cumulative Taker Volume', color='#ff7f0e', linewidth=1.5, linestyle='--', alpha=0.7)
+            ax2b.set_ylabel('Cumulative Trading Volume (USD)', fontsize=12, color='#1f77b4')
+            ax2b.tick_params(axis='y', labelcolor='#1f77b4')
+            
+            # 合并图例
+            lines1, labels1 = ax2.get_legend_handles_labels()
+            lines2, labels2 = ax2b.get_legend_handles_labels()
+            ax2.legend(lines1 + lines2, labels1 + labels2, loc='upper left')
+        else:
+            ax2.legend(loc='upper left')
     
     # 3. 挂单曲线（买入/卖出）
     ax3 = fig.add_subplot(gs[2, :])
@@ -749,8 +874,28 @@ async def run_single_backtest_async(trading_pair: str, strategy_key: str,
             # 兼容性：保留max_position_value（取两者最大值）
             max_position_value = max(max_long_position_value, max_short_position_value)
             
-            maker_fee_paid = total_volume * MAKER_FEE
-            taker_fee_paid = total_volume * TAKER_FEE
+            # 计算maker和taker成交额
+            # 假设LIMIT订单是maker，MARKET订单是taker
+            maker_volume = 0.0
+            taker_volume = 0.0
+            for executor in filled_executors:
+                volume = float(executor.filled_amount_quote) if hasattr(executor, 'filled_amount_quote') and executor.filled_amount_quote else 0.0
+                if volume > 0:
+                    # 检查订单类型：LIMIT订单是maker，MARKET订单是taker
+                    order_type = None
+                    if hasattr(executor, 'config') and hasattr(executor.config, 'triple_barrier_config'):
+                        order_type = executor.config.triple_barrier_config.open_order_type
+                    if order_type and hasattr(order_type, 'is_limit_type') and order_type.is_limit_type():
+                        maker_volume += volume
+                    else:
+                        taker_volume += volume
+            
+            # 如果无法区分，默认全部按taker处理（因为回测中订单可能被taker成交）
+            if maker_volume == 0.0 and taker_volume == 0.0:
+                taker_volume = total_volume
+            
+            maker_fee_paid = maker_volume * MAKER_FEE
+            taker_fee_paid = taker_volume * TAKER_FEE
             return {
                 'trading_pair': trading_pair,
                 'strategy_key': strategy_key,
@@ -780,6 +925,8 @@ async def run_single_backtest_async(trading_pair: str, strategy_key: str,
                 'max_position_value': max_position_value,
                 'max_long_position_value': max_long_position_value,
                 'max_short_position_value': max_short_position_value,
+                'maker_volume': maker_volume,
+                'taker_volume': taker_volume,
                 'maker_fee_paid': maker_fee_paid,
                 'taker_fee_paid': taker_fee_paid,
                 'executors': executors,
@@ -871,6 +1018,8 @@ def generate_comprehensive_report(all_results: List[Dict], data_info_dict: Dict[
         report.append(f"  Max Long Position Value: ${result.get('max_long_position_value', 0):,.2f}")
         report.append(f"  Max Short Position Value: ${result.get('max_short_position_value', 0):,.2f}")
         report.append(f"  Max Position Value: ${result['max_position_value']:,.2f}")
+        report.append(f"  Maker Volume: ${result.get('maker_volume', 0):,.2f}")
+        report.append(f"  Taker Volume: ${result.get('taker_volume', 0):,.2f}")
         report.append(f"  Maker Fee Paid: ${result.get('maker_fee_paid', 0):,.2f}")
         report.append(f"  Taker Fee Paid: ${result.get('taker_fee_paid', 0):,.2f}")
         report.append(f"  Backtest Time: {result['elapsed_time']:.1f}s ({result['elapsed_time']/60:.1f}min)")
@@ -904,103 +1053,18 @@ def main():
     end_ts = int(END_DATE.timestamp())
     actual_resolution = RESAMPLE_INTERVAL if RESAMPLE_INTERVAL else BACKTEST_RESOLUTION
     
-    # 策略配置
+    # 策略配置 - 只使用最优参数的PMM Bar Portion策略
     strategies = {
-        "PMM_Simple": {
-            "name": "PMM Simple",
-            "config_class": PMMSimpleConfig,
-            "params": {
-                "buy_spreads": [0.005, 0.01],
-                "sell_spreads": [0.005, 0.01],
-                "buy_amounts_pct": [Decimal("0.5"), Decimal("0.5")],
-                "sell_amounts_pct": [Decimal("0.5"), Decimal("0.5")],
-                "executor_refresh_time": 300,
-            }
-        },
-        "PMM_Dynamic": {
-            "name": "PMM Dynamic (MACD)",
-            "config_class": PMMDynamicControllerConfig,
-            "params": {
-                "buy_spreads": [0.01, 0.02],
-                "sell_spreads": [0.01, 0.02],
-                "buy_amounts_pct": [Decimal("0.5"), Decimal("0.5")],
-                "sell_amounts_pct": [Decimal("0.5"), Decimal("0.5")],
-                "executor_refresh_time": 300,
-                "candles_connector": "binance_perpetual",
-                "candles_trading_pair": None,
-                "interval": actual_resolution,
-                "macd_fast": 12,
-                "macd_slow": 26,
-                "macd_signal": 9,
-                "natr_length": 14,
-            }
-        },
-        "PMM_Bar_Portion": {
-            "name": "PMM Bar Portion",
+        "PMM_Bar_Portion_Optimal": {
+            "name": "PMM Bar Portion (Optimal Params)",
             "config_class": PMMBarPortionControllerConfig,
             "params": {
-                "buy_spreads": [0.01, 0.02],
-                "sell_spreads": [0.01, 0.02],
-                "buy_amounts_pct": [Decimal("0.5"), Decimal("0.5")],
-                "sell_amounts_pct": [Decimal("0.5"), Decimal("0.5")],
+                **OPTIMAL_PARAMS,
                 "executor_refresh_time": 300,
                 "candles_connector": "binance_perpetual",
                 "candles_trading_pair": None,
                 "interval": actual_resolution,
                 "take_profit_order_type": OrderType.MARKET,
-                "training_window": 60,
-                "natr_length": 14,
-                "atr_length": 10,
-            }
-        },
-        "PMM_Simple_Future": {
-            "name": "PMM Simple (Future Data)",
-            "config_class": PMMSimpleConfig,
-            "params": {
-                "buy_spreads": [0.005, 0.01],
-                "sell_spreads": [0.005, 0.01],
-                "buy_amounts_pct": [Decimal("0.5"), Decimal("0.5")],
-                "sell_amounts_pct": [Decimal("0.5"), Decimal("0.5")],
-                "executor_refresh_time": 300,
-                "use_future_data": True,
-            }
-        },
-        "PMM_Dynamic_Future": {
-            "name": "PMM Dynamic (MACD) Future Data",
-            "config_class": PMMDynamicControllerConfig,
-            "params": {
-                "buy_spreads": [0.01, 0.02],
-                "sell_spreads": [0.01, 0.02],
-                "buy_amounts_pct": [Decimal("0.5"), Decimal("0.5")],
-                "sell_amounts_pct": [Decimal("0.5"), Decimal("0.5")],
-                "executor_refresh_time": 300,
-                "candles_connector": "binance_perpetual",
-                "candles_trading_pair": None,
-                "interval": actual_resolution,
-                "macd_fast": 12,
-                "macd_slow": 26,
-                "macd_signal": 9,
-                "natr_length": 14,
-                "use_future_data": True,
-            }
-        },
-        "PMM_Bar_Portion_Future": {
-            "name": "PMM Bar Portion (Future Data)",
-            "config_class": PMMBarPortionControllerConfig,
-            "params": {
-                "buy_spreads": [0.01, 0.02],
-                "sell_spreads": [0.01, 0.02],
-                "buy_amounts_pct": [Decimal("0.5"), Decimal("0.5")],
-                "sell_amounts_pct": [Decimal("0.5"), Decimal("0.5")],
-                "executor_refresh_time": 300,
-                "candles_connector": "binance_perpetual",
-                "candles_trading_pair": None,
-                "interval": actual_resolution,
-                "take_profit_order_type": OrderType.MARKET,
-                "training_window": 60,
-                "natr_length": 14,
-                "atr_length": 10,
-                "use_future_data": True,
             }
         }
     }

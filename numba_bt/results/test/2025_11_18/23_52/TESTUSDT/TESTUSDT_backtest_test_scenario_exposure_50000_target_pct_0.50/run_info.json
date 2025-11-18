@@ -1,0 +1,12 @@
+{
+  "mode": "test",
+  "symbol": "TESTUSDT",
+  "experiment_name": "TESTUSDT_backtest_test_scenario_exposure_50000_target_pct_0.50",
+  "experiment_scenario": "test_scenario",
+  "parameters": {
+    "exposure": 50000,
+    "target_pct": 0.5
+  },
+  "timestamp": "2025-11-18T23:52:18.904089",
+  "directory": "/home/wilson/hummingbot/numba_bt/results/test/2025_11_18/23_52/TESTUSDT/TESTUSDT_backtest_test_scenario_exposure_50000_target_pct_0.50"
+}

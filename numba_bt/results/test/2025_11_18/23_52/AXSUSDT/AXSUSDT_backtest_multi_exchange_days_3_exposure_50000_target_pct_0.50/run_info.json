@@ -1,0 +1,13 @@
+{
+  "mode": "test",
+  "symbol": "AXSUSDT",
+  "experiment_name": "AXSUSDT_backtest_multi_exchange_days_3_exposure_50000_target_pct_0.50",
+  "experiment_scenario": "multi_exchange",
+  "parameters": {
+    "exposure": 50000,
+    "target_pct": 0.5,
+    "days": 3
+  },
+  "timestamp": "2025-11-18T23:52:24.783952",
+  "directory": "/home/wilson/hummingbot/numba_bt/results/test/2025_11_18/23_52/AXSUSDT/AXSUSDT_backtest_multi_exchange_days_3_exposure_50000_target_pct_0.50"
+}

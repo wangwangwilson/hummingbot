@@ -27,8 +27,10 @@ if cert_file.exists():
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 # 添加 tradingview-ai 项目路径（用于BinancePublicDataManager）
-tradingview_ai_path = Path("/Users/wilson/Desktop/tradingview-ai")
-sys.path.insert(0, str(tradingview_ai_path))
+# 数据路径已迁移到新位置: /mnt/hdd/bigdata/binance_klines/data/futures/um
+# 如果需要使用 BinancePublicDataManager，需要设置环境变量或修改其配置
+# tradingview_ai_path = Path("/Users/wilson/Desktop/tradingview-ai")
+# sys.path.insert(0, str(tradingview_ai_path))
 
 # 临时禁用ccxt（如果只需要读取本地数据）
 class FakeCCXT:
@@ -42,12 +44,9 @@ from controllers.market_making.pmm_dynamic import PMMDynamicControllerConfig
 from hummingbot.strategy_v2.executors.position_executor.data_types import TripleBarrierConfig, OrderType
 
 # 导入本地数据管理器
-try:
-    from src.data.sources.binance_public_data_manager import BinancePublicDataManager
-    LOCAL_DATA_AVAILABLE = True
-except ImportError as e:
-    print(f"⚠️  警告: 无法导入BinancePublicDataManager: {e}")
-    LOCAL_DATA_AVAILABLE = False
+# 数据路径已迁移到新位置，直接读取本地zip文件
+LOCAL_DATA_AVAILABLE = True
+DATA_BASE_PATH = Path("/mnt/hdd/bigdata/binance_klines/data/futures/um")
 
 # 自定义交易对
 CUSTOM_TEST_PAIRS = ["BTC-USDT", "SOL-USDT", "ETH-USDT", "XRP-USDT", "AVAX-USDT", "DOT-USDT", "MYX-USDT"]
@@ -75,17 +74,104 @@ TRADING_FEE = 0.0004  # 0.04% 交易费用
 
 
 class LocalBinanceDataProvider:
-    """使用本地Binance数据的提供器"""
+    """使用本地Binance数据的提供器 - 直接读取新路径数据"""
     
-    def __init__(self):
+    def __init__(self, data_base_path: Path = None):
         if not LOCAL_DATA_AVAILABLE:
-            raise ImportError("BinancePublicDataManager不可用")
-        self.manager = BinancePublicDataManager()
+            raise ImportError("本地数据不可用")
+        self.data_base_path = data_base_path or DATA_BASE_PATH
         self._cache = {}  # 缓存已加载的数据
     
     def _convert_symbol(self, symbol: str) -> str:
         """转换交易对格式: BTC-USDT -> BTCUSDT"""
         return symbol.replace('-', '')
+    
+    def _load_data_from_zip(self, symbol: str, start_date: date, end_date: date) -> pd.DataFrame:
+        """直接从zip文件加载数据"""
+        import zipfile
+        from calendar import monthrange
+        
+        all_data = []
+        
+        # 生成需要读取的月份列表
+        current_date = start_date.replace(day=1)  # 从月初开始
+        end_month = end_date.replace(day=1)
+        
+        while current_date <= end_month:
+            year = current_date.year
+            month = current_date.month
+            
+            # 构建zip文件路径: monthly/klines/{SYMBOL}/1m/{SYMBOL}-1m-{YYYY}-{MM}.zip
+            zip_path = self.data_base_path / "monthly" / "klines" / symbol / "1m" / f"{symbol}-1m-{year:04d}-{month:02d}.zip"
+            
+            if zip_path.exists():
+                try:
+                    with zipfile.ZipFile(zip_path, 'r') as zf:
+                        # 读取zip内的CSV文件（通常只有一个文件）
+                        csv_files = [f for f in zf.namelist() if f.endswith('.csv')]
+                        if csv_files:
+                            csv_file = csv_files[0]
+                            # 读取CSV数据
+                            df = pd.read_csv(zf.open(csv_file))
+                            
+                            # Binance数据格式: open_time, open, high, low, close, volume, close_time, ...
+                            # 重命名列
+                            if 'open_time' in df.columns:
+                                df['timestamp'] = pd.to_datetime(df['open_time'], unit='ms')
+                            elif 'timestamp' not in df.columns:
+                                # 如果没有timestamp，尝试第一列
+                                if len(df.columns) > 0:
+                                    df['timestamp'] = pd.to_datetime(df.iloc[:, 0], unit='ms')
+                            
+                            # 确保有必要的列
+                            required_cols = ['open', 'high', 'low', 'close', 'volume']
+                            col_mapping = {
+                                1: 'open', 2: 'high', 3: 'low', 4: 'close', 5: 'volume'
+                            }
+                            for idx, col_name in col_mapping.items():
+                                if col_name not in df.columns and len(df.columns) > idx:
+                                    df[col_name] = df.iloc[:, idx]
+                            
+                            all_data.append(df)
+                except Exception as e:
+                    print(f"⚠️  读取文件失败 {zip_path}: {e}")
+            
+            # 移动到下一个月
+            if month == 12:
+                current_date = current_date.replace(year=year + 1, month=1)
+            else:
+                current_date = current_date.replace(month=month + 1)
+        
+        if not all_data:
+            return pd.DataFrame(columns=['timestamp', 'open', 'high', 'low', 'close', 'volume'])
+        
+        # 合并所有数据
+        df = pd.concat(all_data, ignore_index=True)
+        
+        # 确保timestamp是datetime类型
+        if 'timestamp' in df.columns:
+            if not pd.api.types.is_datetime64_any_dtype(df['timestamp']):
+                df['timestamp'] = pd.to_datetime(df['timestamp'])
+        else:
+            return pd.DataFrame(columns=['timestamp', 'open', 'high', 'low', 'close', 'volume'])
+        
+        # 过滤日期范围
+        df = df[(df['timestamp'].dt.date >= start_date) & (df['timestamp'].dt.date <= end_date)]
+        
+        # 选择需要的列
+        required_columns = ['timestamp', 'open', 'high', 'low', 'close', 'volume']
+        available_columns = [col for col in required_columns if col in df.columns]
+        df = df[available_columns].copy()
+        
+        # 确保数据类型正确
+        for col in ['open', 'high', 'low', 'close', 'volume']:
+            if col in df.columns:
+                df[col] = pd.to_numeric(df[col], errors='coerce')
+        
+        # 按timestamp排序
+        df = df.sort_values('timestamp').reset_index(drop=True)
+        
+        return df
     
     def get_historical_candles(
         self,
@@ -106,12 +192,18 @@ class LocalBinanceDataProvider:
         Returns:
             DataFrame with columns: timestamp, open, high, low, close, volume
         """
+        # 确保时间戳是整数类型
+        if isinstance(start_ts, str):
+            start_ts = int(start_ts)
+        if isinstance(end_ts, str):
+            end_ts = int(end_ts)
+        
         # 转换交易对格式
         binance_symbol = self._convert_symbol(symbol)
         
         # 转换时间戳为日期
-        start_date = datetime.fromtimestamp(start_ts).date()
-        end_date = datetime.fromtimestamp(end_ts).date()
+        start_date = datetime.fromtimestamp(int(start_ts)).date()
+        end_date = datetime.fromtimestamp(int(end_ts)).date()
         
         # 检查缓存（包含interval）
         cache_key = f"{binance_symbol}_{start_date}_{end_date}_{interval}"
@@ -123,34 +215,8 @@ class LocalBinanceDataProvider:
             if base_cache_key in self._cache:
                 df = self._cache[base_cache_key].copy()
             else:
-                # 读取1分钟数据
-                # 临时重定向stderr以抑制误导性警告和zip文件读取错误
-                # （数据从月度文件加载时会显示"未找到数据文件"，损坏的zip文件会显示"读取失败"）
-                import io
-                import sys
-                old_stderr = sys.stderr
-                sys.stderr = io.StringIO()
-                
-                try:
-                    df = self.manager.get_klines_data(
-                        symbol=binance_symbol,
-                        start_date=start_date,
-                        end_date=end_date,
-                        check_gaps=False  # 快速读取，不检查间隔
-                    )
-                finally:
-                    stderr_output = sys.stderr.getvalue()
-                    sys.stderr = old_stderr
-                    
-                    # 只在实际数据加载失败时打印错误（忽略zip文件读取警告）
-                    if df.empty and stderr_output:
-                        # 检查是否是真正的错误（不是zip文件警告）
-                        error_lines = stderr_output.strip().split('\n')
-                        real_errors = [line for line in error_lines 
-                                     if '读取失败' not in line and 'IO Error' not in line 
-                                     and '未找到' not in line]
-                        if real_errors:
-                            print('\n'.join(real_errors))
+                # 直接读取新路径的zip文件
+                df = self._load_data_from_zip(binance_symbol, start_date, end_date)
                 
                 if df.empty:
                     return pd.DataFrame(columns=['timestamp', 'open', 'high', 'low', 'close', 'volume'])
@@ -873,8 +939,8 @@ async def main():
     if not LOCAL_DATA_AVAILABLE:
         print("✗ 错误: 本地数据不可用")
         print("请确保:")
-        print("1. tradingview-ai项目路径正确: /Users/wilson/Desktop/tradingview-ai")
-        print("2. BinancePublicDataManager可以正常导入")
+        print("1. 数据路径正确: /mnt/hdd/bigdata/binance_klines/data/futures/um")
+        print("2. 数据文件存在且可读")
         sys.exit(1)
     
     if len(sys.argv) > 1:

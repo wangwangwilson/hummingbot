@@ -3,7 +3,21 @@ from typing import List
 
 import numpy as np
 import pandas as pd
-import pandas_ta as ta  # noqa: F401
+try:
+    import pandas_ta as ta  # noqa: F401
+except ImportError:
+    ta = None  # pandas-ta not available, but may not be needed
+    # 简单的natr实现
+    class SimpleTA:
+        @staticmethod
+        def natr(high, low, close, length=14):
+            """简单的NATR实现"""
+            tr = pd.concat([high - low, abs(high - close.shift()), abs(low - close.shift())], axis=1).max(axis=1)
+            atr = tr.rolling(window=length).mean()
+            natr = (atr / close) * 100
+            return natr
+    
+    ta = SimpleTA()
 from pydantic import Field, field_validator
 from pydantic_core.core_schema import ValidationInfo
 
@@ -182,16 +196,23 @@ class PMMBarPortionController(MarketMakingControllerBase):
         """
         Predict price shift based on Bar Portion signal
         
+        论文逻辑：BP信号是均值回归信号
+        - BP高（>0.7）→ 预测价格会回调（下跌）→ 应该向下偏斜（更多卖单）
+        - BP低（<-0.7）→ 预测价格会反弹（上涨）→ 应该向上偏斜（更多买单）
+        
         Args:
             current_bp: Current Bar Portion value
             
         Returns:
-            float: Predicted price multiplier (e.g., 0.001 for 0.1% shift)
+            float: Predicted price multiplier (e.g., -0.001 for 0.1% downward shift when BP is high)
         """
         if self._regression_coef is None or self._regression_intercept is None:
-            return 0.0
+            # 如果没有回归模型，使用简单的均值回归逻辑
+            # BP高 → 预测回调 → 降低价格（更多卖单）
+            max_shift = 0.005  # 0.5% maximum shift
+            return -float(current_bp) * max_shift
         
-        # Predict next return
+        # Predict next return using regression
         predicted_return = self._regression_coef * current_bp + self._regression_intercept
         
         # Convert to price multiplier and cap the shift
@@ -216,20 +237,44 @@ class PMMBarPortionController(MarketMakingControllerBase):
                 connector_name=self.config.candles_connector,
                 trading_pair=self.config.candles_trading_pair,
                 interval=self.config.interval,
-                max_records=self.max_records
+                max_records=max(self.max_records, 10000)  # 获取更多数据以确保包含未来数据
             )
             
-            if len(candles) >= 2:
-                # 在回测中，数据是按时间顺序排列的，我们需要找到当前时间戳对应的K线
-                # 然后获取下一根K线（未来数据）
-                # 为了简化，我们假设-1是当前，-2是"未来"（实际上在回测中需要根据时间戳查找）
-                current_close = candles["close"].iloc[-1]
-                # 注意：在回测中，我们需要根据当前时间戳来查找对应的K线和下一根K线
-                # 这里简化处理，使用-2位置作为"未来"
-                future_close = candles["close"].iloc[-2] if len(candles) >= 2 else current_close
+            if len(candles) >= 2 and 'timestamp' in candles.columns:
+                # 在回测中，需要根据当前时间戳找到对应的K线和下一根K线
+                current_time = self.market_data_provider.time()
                 
-                # 计算未来收益率
-                future_return = (future_close - current_close) / current_close if current_close > 0 else 0.0
+                # 确保timestamp是数值类型（秒级）
+                if candles['timestamp'].dtype == 'object' or pd.api.types.is_datetime64_any_dtype(candles['timestamp']):
+                    # 如果是datetime类型，转换为秒级时间戳
+                    candles_timestamps = pd.to_datetime(candles['timestamp']).astype('int64') // 10**9
+                else:
+                    # 如果是毫秒级时间戳，转换为秒级
+                    if candles['timestamp'].max() > 1e10:
+                        candles_timestamps = candles['timestamp'] / 1000
+                    else:
+                        candles_timestamps = candles['timestamp']
+                
+                # 找到当前时间戳对应的K线（使用<=查找，找到最接近的）
+                current_mask = candles_timestamps <= current_time
+                current_candles = candles[current_mask]
+                if len(current_candles) > 0:
+                    current_close = current_candles["close"].iloc[-1]
+                    
+                    # 找到下一根K线（时间戳大于当前时间的第一根）
+                    future_mask = candles_timestamps > current_time
+                    future_candles = candles[future_mask]
+                    if len(future_candles) > 0:
+                        future_close = future_candles["close"].iloc[0]
+                        # 计算未来收益率
+                        future_return = (future_close - current_close) / current_close if current_close > 0 else 0.0
+                    else:
+                        # 没有未来数据，使用当前价格
+                        future_return = 0.0
+                else:
+                    # 如果找不到当前时间对应的K线，使用最新的K线
+                    current_close = candles["close"].iloc[-1]
+                    future_return = 0.0
                 
                 # 使用未来收益率调整reference_price
                 from hummingbot.core.data_type.common import PriceType
@@ -401,6 +446,8 @@ class PMMBarPortionController(MarketMakingControllerBase):
             return
         
         # Fit regression model: predict next return from current Bar Portion
+        # 论文逻辑：BP信号是均值回归信号，BP高时预测未来收益为负（回调）
+        # 因此我们需要预测：未来收益 = -f(BP)，即BP高时收益为负
         # Shift returns forward to predict next period
         X_train = train_df["bar_portion"].iloc[:-1]
         y_train = train_df["returns"].iloc[1:]
@@ -409,7 +456,36 @@ class PMMBarPortionController(MarketMakingControllerBase):
         
         # Get current Bar Portion and predict price shift
         current_bp = candles["bar_portion"].iloc[-1]
-        price_shift = self.predict_price_shift(current_bp)
+        
+        # 论文逻辑：BP信号与未来收益呈单调递减关系（均值回归）
+        # BP高（>0.7）→ 预测价格会回调（下跌）→ 应该向下偏斜（更多卖单）
+        # BP低（<-0.7）→ 预测价格会反弹（上涨）→ 应该向上偏斜（更多买单）
+        # 
+        # 如果回归系数为正，说明BP高时收益为正（趋势），这与论文的均值回归逻辑相反
+        # 如果回归系数为负，说明BP高时收益为负（回调），符合论文逻辑
+        # 
+        # 为了确保符合论文逻辑，我们使用负的预测收益：
+        # - 如果BP高，预测收益为负，降低reference_price（更多卖单）
+        # - 如果BP低，预测收益为正，提高reference_price（更多买单）
+        predicted_return = self.predict_price_shift(current_bp)
+        
+        # 根据论文逻辑，BP是均值回归信号，应该取反
+        # 但先检查回归系数的符号，如果已经是负的，说明符合论文逻辑
+        if self._regression_coef is not None:
+            # 如果回归系数为正，说明BP高时收益为正（趋势），需要取反
+            # 如果回归系数为负，说明BP高时收益为负（回调），符合论文逻辑
+            if self._regression_coef > 0:
+                # 回归系数为正，说明是趋势信号，需要取反以符合均值回归逻辑
+                price_shift = -predicted_return
+            else:
+                # 回归系数为负，说明已经是均值回归信号，直接使用
+                price_shift = predicted_return
+        else:
+            # 如果没有回归系数，使用简单的均值回归逻辑
+            # BP高 → 预测回调 → 降低价格（更多卖单）
+            # BP低 → 预测反弹 → 提高价格（更多买单）
+            max_shift = 0.005  # 0.5%最大偏移
+            price_shift = -float(current_bp) * max_shift  # 取反，BP高时降低价格
         
         # Calculate NATR for dynamic spread
         natr = ta.natr(candles["high"], candles["low"], candles["close"], 

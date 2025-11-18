@@ -2,7 +2,35 @@ from decimal import Decimal
 from typing import List
 
 import pandas as pd
-import pandas_ta as ta  # noqa: F401
+try:
+    import pandas_ta as ta  # noqa: F401
+except ImportError:
+    ta = None  # pandas-ta not available, but may not be needed
+    # 简单的natr和macd实现
+    class SimpleTA:
+        @staticmethod
+        def natr(high, low, close, length=14):
+            """简单的NATR实现"""
+            tr = pd.concat([high - low, abs(high - close.shift()), abs(low - close.shift())], axis=1).max(axis=1)
+            atr = tr.rolling(window=length).mean()
+            natr = (atr / close) * 100
+            return natr
+        
+        @staticmethod
+        def macd(close, fast=12, slow=26, signal=9):
+            """简单的MACD实现"""
+            ema_fast = close.ewm(span=fast, adjust=False).mean()
+            ema_slow = close.ewm(span=slow, adjust=False).mean()
+            macd_line = ema_fast - ema_slow
+            signal_line = macd_line.ewm(span=signal, adjust=False).mean()
+            histogram = macd_line - signal_line
+            return pd.DataFrame({
+                f"MACD_{fast}_{slow}_{signal}": macd_line,
+                f"MACDs_{fast}_{slow}_{signal}": signal_line,
+                f"MACDh_{fast}_{slow}_{signal}": histogram
+            })
+    
+    ta = SimpleTA()
 from pydantic import Field, field_validator
 from pydantic_core.core_schema import ValidationInfo
 
@@ -104,16 +132,44 @@ class PMMDynamicController(MarketMakingControllerBase):
                 connector_name=self.config.candles_connector,
                 trading_pair=self.config.candles_trading_pair,
                 interval=self.config.interval,
-                max_records=self.max_records
+                max_records=max(self.max_records, 10000)  # 获取更多数据以确保包含未来数据
             )
             
-            if len(candles) >= 2:
-                # 获取当前和下一根K线的价格
-                current_close = candles["close"].iloc[-1]
-                future_close = candles["close"].iloc[-2] if len(candles) >= 2 else current_close
+            if len(candles) >= 2 and 'timestamp' in candles.columns:
+                # 在回测中，需要根据当前时间戳找到对应的K线和下一根K线
+                current_time = self.market_data_provider.time()
                 
-                # 计算未来收益率
-                future_return = (future_close - current_close) / current_close if current_close > 0 else 0.0
+                # 确保timestamp是数值类型（秒级）
+                if candles['timestamp'].dtype == 'object' or pd.api.types.is_datetime64_any_dtype(candles['timestamp']):
+                    # 如果是datetime类型，转换为秒级时间戳
+                    candles_timestamps = pd.to_datetime(candles['timestamp']).astype('int64') // 10**9
+                else:
+                    # 如果是毫秒级时间戳，转换为秒级
+                    if candles['timestamp'].max() > 1e10:
+                        candles_timestamps = candles['timestamp'] / 1000
+                    else:
+                        candles_timestamps = candles['timestamp']
+                
+                # 找到当前时间戳对应的K线（使用<=查找，找到最接近的）
+                current_mask = candles_timestamps <= current_time
+                current_candles = candles[current_mask]
+                if len(current_candles) > 0:
+                    current_close = current_candles["close"].iloc[-1]
+                    
+                    # 找到下一根K线（时间戳大于当前时间的第一根）
+                    future_mask = candles_timestamps > current_time
+                    future_candles = candles[future_mask]
+                    if len(future_candles) > 0:
+                        future_close = future_candles["close"].iloc[0]
+                        # 计算未来收益率
+                        future_return = (future_close - current_close) / current_close if current_close > 0 else 0.0
+                    else:
+                        # 没有未来数据，使用当前价格
+                        future_return = 0.0
+                else:
+                    # 如果找不到当前时间对应的K线，使用最新的K线
+                    current_close = candles["close"].iloc[-1]
+                    future_return = 0.0
                 
                 # 使用未来收益率调整reference_price
                 from hummingbot.core.data_type.common import PriceType

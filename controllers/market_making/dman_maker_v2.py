@@ -1,7 +1,10 @@
 from decimal import Decimal
 from typing import List, Optional
 
-import pandas_ta as ta  # noqa: F401
+try:
+    import pandas_ta as ta  # noqa: F401
+except ImportError:
+    ta = None  # pandas-ta not available, but may not be needed
 from pydantic import Field, field_validator
 
 from hummingbot.core.data_type.common import TradeType

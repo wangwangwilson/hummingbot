@@ -1,0 +1,49 @@
+{
+  "overall_performance": {
+    "total_pnl_with_fees": 418.0518063363852,
+    "total_pnl_no_fees": 722.4047000013525,
+    "pnl_with_fees_ratio": 0.6435585173181464,
+    "pnl_no_fees_ratio": 1.1120863265985779,
+    "sharpe_ratio": 61.3160742658626,
+    "max_drawdown": 0.00028289209680806734,
+    "calmar_ratio": 238.62777844364592,
+    "annualized_return": 0.06750591260057393,
+    "duration_years": 0.006398230632240728
+  },
+  "maker_performance": {
+    "total_maker_pnl_no_fees": 0.0,
+    "maker_volume_total": 0.0,
+    "maker_pnl_ratio": 0.0,
+    "maker_pnl_pct_volume": 0.0,
+    "actual_maker_fees_cost_rebate": 0.0
+  },
+  "taker_performance": {
+    "total_taker_pnl_no_fees": 2811.1705899096855,
+    "taker_volume_total": 2029019.2911,
+    "taker_pnl_ratio": 13.854824358942663,
+    "taker_pnl_pct_volume": 0.0013854824358942664,
+    "actual_taker_fees_cost": -304.3528936649997
+  },
+  "fee_analysis": {
+    "total_actual_fees": -304.3528936649997
+  },
+  "order_behavior_metrics": {
+    "avg_fill_time_sec": NaN,
+    "median_fill_time_sec": NaN,
+    "avg_fill_rate": NaN,
+    "finish_all_pct": NaN,
+    "finish_hit_pct": NaN,
+    "buy_orders": {},
+    "sell_orders": {},
+    "avg_slippage_pct": NaN,
+    "total_slippage_value": 0.0,
+    "buy_api_stats_1min": {},
+    "sell_api_stats_1min": {},
+    "api_calls_per_minute": {
+      "mean": 0.0,
+      "median": 0.0,
+      "max": 0.0,
+      "min": 0.0
+    }
+  }
+}

@@ -1,0 +1,4149 @@
+{
+  "trading_pair": "DOGE-USDT",
+  "start_date": "2025-03-01T00:00:00",
+  "end_date": "2025-03-15T00:00:00",
+  "n_trials": 90,
+  "total_trials_completed": 90,
+  "trials": [
+    {
+      "trial_number": 0,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.01,
+          0.03
+        ],
+        "sell_spreads": [
+          0.02,
+          0.04
+        ],
+        "stop_loss": "0.015",
+        "take_profit": "0.01",
+        "time_limit": 1800,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 20,
+        "atr_length": 12,
+        "training_window": 90,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:52.085174"
+    },
+    {
+      "trial_number": 1,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.01,
+          0.03
+        ],
+        "sell_spreads": [
+          0.02,
+          0.03
+        ],
+        "stop_loss": "0.015",
+        "take_profit": "0.01",
+        "time_limit": 2700,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 20,
+        "atr_length": 10,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:52.098755"
+    },
+    {
+      "trial_number": 2,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.02,
+          0.03
+        ],
+        "sell_spreads": [
+          0.01,
+          0.02
+        ],
+        "stop_loss": "0.02",
+        "take_profit": "0.02",
+        "time_limit": 1800,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 20,
+        "atr_length": 12,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:52.112212"
+    },
+    {
+      "trial_number": 3,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.02,
+          0.03
+        ],
+        "sell_spreads": [
+          0.01,
+          0.03
+        ],
+        "stop_loss": "0.03",
+        "take_profit": "0.02",
+        "time_limit": 2700,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 14,
+        "atr_length": 12,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:52.223123"
+    },
+    {
+      "trial_number": 4,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.01,
+          0.02
+        ],
+        "sell_spreads": [
+          0.01,
+          0.03
+        ],
+        "stop_loss": "0.02",
+        "take_profit": "0.015",
+        "time_limit": 2700,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 20,
+        "atr_length": 12,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:52.237906"
+    },
+    {
+      "trial_number": 5,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.02,
+          0.04
+        ],
+        "sell_spreads": [
+          0.02,
+          0.04
+        ],
+        "stop_loss": "0.025",
+        "take_profit": "0.02",
+        "time_limit": 1800,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 14,
+        "atr_length": 10,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:52.251624"
+    },
+    {
+      "trial_number": 6,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.01,
+          0.03
+        ],
+        "sell_spreads": [
+          0.01,
+          0.02
+        ],
+        "stop_loss": "0.02",
+        "take_profit": "0.015",
+        "time_limit": 1800,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 20,
+        "atr_length": 10,
+        "training_window": 90,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:52.265435"
+    },
+    {
+      "trial_number": 7,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.02,
+          0.03
+        ],
+        "sell_spreads": [
+          0.01,
+          0.03
+        ],
+        "stop_loss": "0.025",
+        "take_profit": "0.02",
+        "time_limit": 4500,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 14,
+        "atr_length": 10,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:52.279450"
+    },
+    {
+      "trial_number": 8,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.02,
+          0.03
+        ],
+        "sell_spreads": [
+          0.02,
+          0.03
+        ],
+        "stop_loss": "0.02",
+        "take_profit": "0.01",
+        "time_limit": 4500,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 20,
+        "atr_length": 12,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:52.293208"
+    },
+    {
+      "trial_number": 9,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.01,
+          0.03
+        ],
+        "sell_spreads": [
+          0.02,
+          0.04
+        ],
+        "stop_loss": "0.03",
+        "take_profit": "0.015",
+        "time_limit": 3600,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 14,
+        "atr_length": 10,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:52.307041"
+    },
+    {
+      "trial_number": 10,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.01,
+          0.03
+        ],
+        "sell_spreads": [
+          0.02,
+          0.04
+        ],
+        "stop_loss": "0.015",
+        "take_profit": "0.01",
+        "time_limit": 5400,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 20,
+        "atr_length": 12,
+        "training_window": 90,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:52.335567"
+    },
+    {
+      "trial_number": 11,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.01,
+          0.03
+        ],
+        "sell_spreads": [
+          0.02,
+          0.03
+        ],
+        "stop_loss": "0.015",
+        "take_profit": "0.01",
+        "time_limit": 2700,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 20,
+        "atr_length": 10,
+        "training_window": 90,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:52.363246"
+    },
+    {
+      "trial_number": 12,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.01,
+          0.03
+        ],
+        "sell_spreads": [
+          0.02,
+          0.03
+        ],
+        "stop_loss": "0.015",
+        "take_profit": "0.01",
+        "time_limit": 2700,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 20,
+        "atr_length": 12,
+        "training_window": 90,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:52.391736"
+    },
+    {
+      "trial_number": 13,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.01,
+          0.03
+        ],
+        "sell_spreads": [
+          0.02,
+          0.03
+        ],
+        "stop_loss": "0.015",
+        "take_profit": "0.01",
+        "time_limit": 3600,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 20,
+        "atr_length": 10,
+        "training_window": 90,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:52.419867"
+    },
+    {
+      "trial_number": 14,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.01,
+          0.03
+        ],
+        "sell_spreads": [
+          0.02,
+          0.04
+        ],
+        "stop_loss": "0.015",
+        "take_profit": "0.01",
+        "time_limit": 1800,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 20,
+        "atr_length": 12,
+        "training_window": 90,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:52.447636"
+    },
+    {
+      "trial_number": 15,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.01,
+          0.03
+        ],
+        "sell_spreads": [
+          0.02,
+          0.03
+        ],
+        "stop_loss": "0.015",
+        "take_profit": "0.015",
+        "time_limit": 2700,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 20,
+        "atr_length": 10,
+        "training_window": 90,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:52.475114"
+    },
+    {
+      "trial_number": 16,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.01,
+          0.03
+        ],
+        "sell_spreads": [
+          0.02,
+          0.04
+        ],
+        "stop_loss": "0.025",
+        "take_profit": "0.01",
+        "time_limit": 1800,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 20,
+        "atr_length": 12,
+        "training_window": 90,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:52.503741"
+    },
+    {
+      "trial_number": 17,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.01,
+          0.03
+        ],
+        "sell_spreads": [
+          0.02,
+          0.03
+        ],
+        "stop_loss": "0.02",
+        "take_profit": "0.015",
+        "time_limit": 3600,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 14,
+        "atr_length": 10,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:52.531882"
+    },
+    {
+      "trial_number": 18,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.01,
+          0.03
+        ],
+        "sell_spreads": [
+          0.02,
+          0.04
+        ],
+        "stop_loss": "0.015",
+        "take_profit": "0.01",
+        "time_limit": 2700,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 20,
+        "atr_length": 10,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:52.559907"
+    },
+    {
+      "trial_number": 19,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.01,
+          0.03
+        ],
+        "sell_spreads": [
+          0.02,
+          0.03
+        ],
+        "stop_loss": "0.02",
+        "take_profit": "0.015",
+        "time_limit": 4500,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 20,
+        "atr_length": 12,
+        "training_window": 90,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:52.588523"
+    },
+    {
+      "trial_number": 20,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.02,
+          0.03
+        ],
+        "sell_spreads": [
+          0.01,
+          0.03
+        ],
+        "stop_loss": "0.015",
+        "take_profit": "0.01",
+        "time_limit": 1800,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 14,
+        "atr_length": 12,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:52.617014"
+    },
+    {
+      "trial_number": 21,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.02,
+          0.03
+        ],
+        "sell_spreads": [
+          0.01,
+          0.02
+        ],
+        "stop_loss": "0.02",
+        "take_profit": "0.02",
+        "time_limit": 1800,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 20,
+        "atr_length": 12,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:52.645627"
+    },
+    {
+      "trial_number": 22,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.02,
+          0.03
+        ],
+        "sell_spreads": [
+          0.01,
+          0.02
+        ],
+        "stop_loss": "0.02",
+        "take_profit": "0.015",
+        "time_limit": 1800,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 20,
+        "atr_length": 12,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:52.674833"
+    },
+    {
+      "trial_number": 23,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.02,
+          0.03
+        ],
+        "sell_spreads": [
+          0.01,
+          0.02
+        ],
+        "stop_loss": "0.015",
+        "take_profit": "0.02",
+        "time_limit": 2700,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 20,
+        "atr_length": 12,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:52.703428"
+    },
+    {
+      "trial_number": 24,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.02,
+          0.03
+        ],
+        "sell_spreads": [
+          0.01,
+          0.02
+        ],
+        "stop_loss": "0.025",
+        "take_profit": "0.02",
+        "time_limit": 1800,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 20,
+        "atr_length": 12,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:52.732472"
+    },
+    {
+      "trial_number": 25,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.01,
+          0.03
+        ],
+        "sell_spreads": [
+          0.02,
+          0.03
+        ],
+        "stop_loss": "0.02",
+        "take_profit": "0.01",
+        "time_limit": 3600,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 20,
+        "atr_length": 12,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:52.761228"
+    },
+    {
+      "trial_number": 26,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.02,
+          0.03
+        ],
+        "sell_spreads": [
+          0.01,
+          0.02
+        ],
+        "stop_loss": "0.015",
+        "take_profit": "0.015",
+        "time_limit": 2700,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 20,
+        "atr_length": 10,
+        "training_window": 90,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:52.790198"
+    },
+    {
+      "trial_number": 27,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.01,
+          0.03
+        ],
+        "sell_spreads": [
+          0.02,
+          0.03
+        ],
+        "stop_loss": "0.015",
+        "take_profit": "0.015",
+        "time_limit": 1800,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 20,
+        "atr_length": 12,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:52.819025"
+    },
+    {
+      "trial_number": 28,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.02,
+          0.03
+        ],
+        "sell_spreads": [
+          0.01,
+          0.03
+        ],
+        "stop_loss": "0.02",
+        "take_profit": "0.01",
+        "time_limit": 1800,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 20,
+        "atr_length": 10,
+        "training_window": 90,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:52.848825"
+    },
+    {
+      "trial_number": 29,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.01,
+          0.03
+        ],
+        "sell_spreads": [
+          0.02,
+          0.03
+        ],
+        "stop_loss": "0.03",
+        "take_profit": "0.02",
+        "time_limit": 2700,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 14,
+        "atr_length": 12,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:52.878461"
+    },
+    {
+      "trial_number": 30,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.02,
+          0.03
+        ],
+        "sell_spreads": [
+          0.01,
+          0.03
+        ],
+        "stop_loss": "0.025",
+        "take_profit": "0.02",
+        "time_limit": 2700,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 20,
+        "atr_length": 12,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:52.908091"
+    },
+    {
+      "trial_number": 31,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.02,
+          0.03
+        ],
+        "sell_spreads": [
+          0.01,
+          0.03
+        ],
+        "stop_loss": "0.03",
+        "take_profit": "0.02",
+        "time_limit": 2700,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 14,
+        "atr_length": 12,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:52.937877"
+    },
+    {
+      "trial_number": 32,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.02,
+          0.03
+        ],
+        "sell_spreads": [
+          0.01,
+          0.03
+        ],
+        "stop_loss": "0.03",
+        "take_profit": "0.02",
+        "time_limit": 2700,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 14,
+        "atr_length": 12,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:52.968973"
+    },
+    {
+      "trial_number": 33,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.02,
+          0.03
+        ],
+        "sell_spreads": [
+          0.01,
+          0.03
+        ],
+        "stop_loss": "0.025",
+        "take_profit": "0.02",
+        "time_limit": 1800,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 14,
+        "atr_length": 12,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:52.999578"
+    },
+    {
+      "trial_number": 34,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.02,
+          0.03
+        ],
+        "sell_spreads": [
+          0.01,
+          0.03
+        ],
+        "stop_loss": "0.02",
+        "take_profit": "0.02",
+        "time_limit": 1800,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 14,
+        "atr_length": 12,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:53.030052"
+    },
+    {
+      "trial_number": 35,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.02,
+          0.03
+        ],
+        "sell_spreads": [
+          0.01,
+          0.03
+        ],
+        "stop_loss": "0.025",
+        "take_profit": "0.02",
+        "time_limit": 3600,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 14,
+        "atr_length": 12,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:53.060214"
+    },
+    {
+      "trial_number": 36,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.01,
+          0.02
+        ],
+        "sell_spreads": [
+          0.01,
+          0.03
+        ],
+        "stop_loss": "0.03",
+        "take_profit": "0.015",
+        "time_limit": 2700,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 20,
+        "atr_length": 10,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:53.090949"
+    },
+    {
+      "trial_number": 37,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.02,
+          0.04
+        ],
+        "sell_spreads": [
+          0.02,
+          0.04
+        ],
+        "stop_loss": "0.02",
+        "take_profit": "0.015",
+        "time_limit": 3600,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 14,
+        "atr_length": 12,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:53.121383"
+    },
+    {
+      "trial_number": 38,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.01,
+          0.03
+        ],
+        "sell_spreads": [
+          0.01,
+          0.02
+        ],
+        "stop_loss": "0.015",
+        "take_profit": "0.01",
+        "time_limit": 5400,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 20,
+        "atr_length": 10,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:53.151760"
+    },
+    {
+      "trial_number": 39,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.02,
+          0.03
+        ],
+        "sell_spreads": [
+          0.02,
+          0.04
+        ],
+        "stop_loss": "0.025",
+        "take_profit": "0.02",
+        "time_limit": 1800,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 20,
+        "atr_length": 12,
+        "training_window": 90,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:53.183068"
+    },
+    {
+      "trial_number": 40,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.01,
+          0.03
+        ],
+        "sell_spreads": [
+          0.02,
+          0.03
+        ],
+        "stop_loss": "0.015",
+        "take_profit": "0.01",
+        "time_limit": 1800,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 14,
+        "atr_length": 10,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:53.214069"
+    },
+    {
+      "trial_number": 41,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.01,
+          0.02
+        ],
+        "sell_spreads": [
+          0.01,
+          0.03
+        ],
+        "stop_loss": "0.02",
+        "take_profit": "0.015",
+        "time_limit": 2700,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 20,
+        "atr_length": 12,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:53.244915"
+    },
+    {
+      "trial_number": 42,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.01,
+          0.02
+        ],
+        "sell_spreads": [
+          0.01,
+          0.03
+        ],
+        "stop_loss": "0.02",
+        "take_profit": "0.01",
+        "time_limit": 2700,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 20,
+        "atr_length": 12,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:53.275780"
+    },
+    {
+      "trial_number": 43,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.01,
+          0.02
+        ],
+        "sell_spreads": [
+          0.01,
+          0.03
+        ],
+        "stop_loss": "0.02",
+        "take_profit": "0.01",
+        "time_limit": 3600,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 20,
+        "atr_length": 12,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:53.306552"
+    },
+    {
+      "trial_number": 44,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.01,
+          0.02
+        ],
+        "sell_spreads": [
+          0.01,
+          0.03
+        ],
+        "stop_loss": "0.015",
+        "take_profit": "0.015",
+        "time_limit": 4500,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 20,
+        "atr_length": 12,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:53.337905"
+    },
+    {
+      "trial_number": 45,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.01,
+          0.03
+        ],
+        "sell_spreads": [
+          0.02,
+          0.04
+        ],
+        "stop_loss": "0.025",
+        "take_profit": "0.015",
+        "time_limit": 2700,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 20,
+        "atr_length": 12,
+        "training_window": 90,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:53.369440"
+    },
+    {
+      "trial_number": 46,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.01,
+          0.03
+        ],
+        "sell_spreads": [
+          0.02,
+          0.04
+        ],
+        "stop_loss": "0.015",
+        "take_profit": "0.01",
+        "time_limit": 1800,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 20,
+        "atr_length": 12,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:53.400992"
+    },
+    {
+      "trial_number": 47,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.01,
+          0.02
+        ],
+        "sell_spreads": [
+          0.01,
+          0.02
+        ],
+        "stop_loss": "0.015",
+        "take_profit": "0.02",
+        "time_limit": 3600,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 20,
+        "atr_length": 10,
+        "training_window": 90,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:53.432759"
+    },
+    {
+      "trial_number": 48,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.01,
+          0.03
+        ],
+        "sell_spreads": [
+          0.02,
+          0.04
+        ],
+        "stop_loss": "0.02",
+        "take_profit": "0.01",
+        "time_limit": 1800,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 20,
+        "atr_length": 12,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:53.464119"
+    },
+    {
+      "trial_number": 49,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.01,
+          0.02
+        ],
+        "sell_spreads": [
+          0.01,
+          0.02
+        ],
+        "stop_loss": "0.02",
+        "take_profit": "0.015",
+        "time_limit": 2700,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 20,
+        "atr_length": 12,
+        "training_window": 90,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:53.496495"
+    },
+    {
+      "trial_number": 50,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.01,
+          0.03
+        ],
+        "sell_spreads": [
+          0.02,
+          0.04
+        ],
+        "stop_loss": "0.015",
+        "take_profit": "0.02",
+        "time_limit": 4500,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 20,
+        "atr_length": 10,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:53.528729"
+    },
+    {
+      "trial_number": 51,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.02,
+          0.04
+        ],
+        "sell_spreads": [
+          0.02,
+          0.04
+        ],
+        "stop_loss": "0.03",
+        "take_profit": "0.02",
+        "time_limit": 1800,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 14,
+        "atr_length": 10,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:53.560795"
+    },
+    {
+      "trial_number": 52,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.02,
+          0.04
+        ],
+        "sell_spreads": [
+          0.02,
+          0.04
+        ],
+        "stop_loss": "0.025",
+        "take_profit": "0.02",
+        "time_limit": 1800,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 14,
+        "atr_length": 10,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:53.592736"
+    },
+    {
+      "trial_number": 53,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.02,
+          0.04
+        ],
+        "sell_spreads": [
+          0.02,
+          0.04
+        ],
+        "stop_loss": "0.03",
+        "take_profit": "0.02",
+        "time_limit": 1800,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 14,
+        "atr_length": 10,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:53.624832"
+    },
+    {
+      "trial_number": 54,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.02,
+          0.04
+        ],
+        "sell_spreads": [
+          0.02,
+          0.03
+        ],
+        "stop_loss": "0.025",
+        "take_profit": "0.02",
+        "time_limit": 2700,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 14,
+        "atr_length": 10,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:53.656942"
+    },
+    {
+      "trial_number": 55,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.02,
+          0.04
+        ],
+        "sell_spreads": [
+          0.02,
+          0.04
+        ],
+        "stop_loss": "0.02",
+        "take_profit": "0.01",
+        "time_limit": 1800,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 14,
+        "atr_length": 10,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:53.689824"
+    },
+    {
+      "trial_number": 56,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.02,
+          0.04
+        ],
+        "sell_spreads": [
+          0.02,
+          0.03
+        ],
+        "stop_loss": "0.025",
+        "take_profit": "0.02",
+        "time_limit": 2700,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 20,
+        "atr_length": 12,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:53.722167"
+    },
+    {
+      "trial_number": 57,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.02,
+          0.03
+        ],
+        "sell_spreads": [
+          0.01,
+          0.03
+        ],
+        "stop_loss": "0.015",
+        "take_profit": "0.015",
+        "time_limit": 1800,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 20,
+        "atr_length": 10,
+        "training_window": 90,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:53.754529"
+    },
+    {
+      "trial_number": 58,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.01,
+          0.03
+        ],
+        "sell_spreads": [
+          0.02,
+          0.03
+        ],
+        "stop_loss": "0.02",
+        "take_profit": "0.01",
+        "time_limit": 3600,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 14,
+        "atr_length": 12,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:53.787124"
+    },
+    {
+      "trial_number": 59,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.02,
+          0.03
+        ],
+        "sell_spreads": [
+          0.01,
+          0.03
+        ],
+        "stop_loss": "0.015",
+        "take_profit": "0.02",
+        "time_limit": 2700,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 20,
+        "atr_length": 12,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:53.819845"
+    },
+    {
+      "trial_number": 60,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.01,
+          0.03
+        ],
+        "sell_spreads": [
+          0.02,
+          0.03
+        ],
+        "stop_loss": "0.03",
+        "take_profit": "0.01",
+        "time_limit": 1800,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 20,
+        "atr_length": 10,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:53.853084"
+    },
+    {
+      "trial_number": 61,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.01,
+          0.03
+        ],
+        "sell_spreads": [
+          0.01,
+          0.02
+        ],
+        "stop_loss": "0.02",
+        "take_profit": "0.015",
+        "time_limit": 1800,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 20,
+        "atr_length": 10,
+        "training_window": 90,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:53.885731"
+    },
+    {
+      "trial_number": 62,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.01,
+          0.03
+        ],
+        "sell_spreads": [
+          0.01,
+          0.02
+        ],
+        "stop_loss": "0.02",
+        "take_profit": "0.015",
+        "time_limit": 1800,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 20,
+        "atr_length": 10,
+        "training_window": 90,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:53.918541"
+    },
+    {
+      "trial_number": 63,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.01,
+          0.03
+        ],
+        "sell_spreads": [
+          0.01,
+          0.02
+        ],
+        "stop_loss": "0.02",
+        "take_profit": "0.015",
+        "time_limit": 1800,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 20,
+        "atr_length": 10,
+        "training_window": 90,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:53.951428"
+    },
+    {
+      "trial_number": 64,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.01,
+          0.03
+        ],
+        "sell_spreads": [
+          0.01,
+          0.02
+        ],
+        "stop_loss": "0.025",
+        "take_profit": "0.015",
+        "time_limit": 2700,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 20,
+        "atr_length": 10,
+        "training_window": 90,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:53.986919"
+    },
+    {
+      "trial_number": 65,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.01,
+          0.03
+        ],
+        "sell_spreads": [
+          0.01,
+          0.02
+        ],
+        "stop_loss": "0.02",
+        "take_profit": "0.02",
+        "time_limit": 1800,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 20,
+        "atr_length": 12,
+        "training_window": 90,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:54.020681"
+    },
+    {
+      "trial_number": 66,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.02,
+          0.03
+        ],
+        "sell_spreads": [
+          0.01,
+          0.03
+        ],
+        "stop_loss": "0.015",
+        "take_profit": "0.015",
+        "time_limit": 1800,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 20,
+        "atr_length": 10,
+        "training_window": 90,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:54.053923"
+    },
+    {
+      "trial_number": 67,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.01,
+          0.02
+        ],
+        "sell_spreads": [
+          0.01,
+          0.02
+        ],
+        "stop_loss": "0.02",
+        "take_profit": "0.02",
+        "time_limit": 2700,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 14,
+        "atr_length": 12,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:54.087095"
+    },
+    {
+      "trial_number": 68,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.02,
+          0.04
+        ],
+        "sell_spreads": [
+          0.02,
+          0.04
+        ],
+        "stop_loss": "0.025",
+        "take_profit": "0.01",
+        "time_limit": 5400,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 20,
+        "atr_length": 12,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:54.120673"
+    },
+    {
+      "trial_number": 69,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.01,
+          0.02
+        ],
+        "sell_spreads": [
+          0.01,
+          0.02
+        ],
+        "stop_loss": "0.015",
+        "take_profit": "0.015",
+        "time_limit": 2700,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 14,
+        "atr_length": 10,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:54.154275"
+    },
+    {
+      "trial_number": 70,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.02,
+          0.04
+        ],
+        "sell_spreads": [
+          0.01,
+          0.03
+        ],
+        "stop_loss": "0.03",
+        "take_profit": "0.02",
+        "time_limit": 1800,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 20,
+        "atr_length": 12,
+        "training_window": 90,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:54.188104"
+    },
+    {
+      "trial_number": 71,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.02,
+          0.03
+        ],
+        "sell_spreads": [
+          0.01,
+          0.03
+        ],
+        "stop_loss": "0.025",
+        "take_profit": "0.02",
+        "time_limit": 4500,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 14,
+        "atr_length": 10,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:54.221447"
+    },
+    {
+      "trial_number": 72,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.02,
+          0.03
+        ],
+        "sell_spreads": [
+          0.01,
+          0.03
+        ],
+        "stop_loss": "0.025",
+        "take_profit": "0.02",
+        "time_limit": 5400,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 14,
+        "atr_length": 10,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:54.256435"
+    },
+    {
+      "trial_number": 73,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.02,
+          0.03
+        ],
+        "sell_spreads": [
+          0.01,
+          0.03
+        ],
+        "stop_loss": "0.025",
+        "take_profit": "0.02",
+        "time_limit": 4500,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 14,
+        "atr_length": 10,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:54.290866"
+    },
+    {
+      "trial_number": 74,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.02,
+          0.03
+        ],
+        "sell_spreads": [
+          0.01,
+          0.03
+        ],
+        "stop_loss": "0.02",
+        "take_profit": "0.02",
+        "time_limit": 4500,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 14,
+        "atr_length": 10,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:54.324570"
+    },
+    {
+      "trial_number": 75,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.02,
+          0.03
+        ],
+        "sell_spreads": [
+          0.01,
+          0.03
+        ],
+        "stop_loss": "0.03",
+        "take_profit": "0.01",
+        "time_limit": 3600,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 14,
+        "atr_length": 10,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:54.359363"
+    },
+    {
+      "trial_number": 76,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.01,
+          0.02
+        ],
+        "sell_spreads": [
+          0.02,
+          0.04
+        ],
+        "stop_loss": "0.02",
+        "take_profit": "0.02",
+        "time_limit": 1800,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 20,
+        "atr_length": 12,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:54.393583"
+    },
+    {
+      "trial_number": 77,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.02,
+          0.03
+        ],
+        "sell_spreads": [
+          0.01,
+          0.03
+        ],
+        "stop_loss": "0.015",
+        "take_profit": "0.02",
+        "time_limit": 2700,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 14,
+        "atr_length": 12,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:54.428004"
+    },
+    {
+      "trial_number": 78,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.01,
+          0.03
+        ],
+        "sell_spreads": [
+          0.01,
+          0.02
+        ],
+        "stop_loss": "0.02",
+        "take_profit": "0.015",
+        "time_limit": 3600,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 20,
+        "atr_length": 10,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:54.462309"
+    },
+    {
+      "trial_number": 79,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.02,
+          0.03
+        ],
+        "sell_spreads": [
+          0.02,
+          0.04
+        ],
+        "stop_loss": "0.025",
+        "take_profit": "0.01",
+        "time_limit": 1800,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 20,
+        "atr_length": 12,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:54.496762"
+    },
+    {
+      "trial_number": 80,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.01,
+          0.03
+        ],
+        "sell_spreads": [
+          0.01,
+          0.02
+        ],
+        "stop_loss": "0.015",
+        "take_profit": "0.02",
+        "time_limit": 2700,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 14,
+        "atr_length": 10,
+        "training_window": 90,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:54.531452"
+    },
+    {
+      "trial_number": 81,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.02,
+          0.03
+        ],
+        "sell_spreads": [
+          0.02,
+          0.03
+        ],
+        "stop_loss": "0.02",
+        "take_profit": "0.01",
+        "time_limit": 4500,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 20,
+        "atr_length": 12,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:54.565943"
+    },
+    {
+      "trial_number": 82,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.02,
+          0.03
+        ],
+        "sell_spreads": [
+          0.02,
+          0.03
+        ],
+        "stop_loss": "0.02",
+        "take_profit": "0.01",
+        "time_limit": 4500,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 20,
+        "atr_length": 12,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:54.600652"
+    },
+    {
+      "trial_number": 83,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.02,
+          0.03
+        ],
+        "sell_spreads": [
+          0.02,
+          0.03
+        ],
+        "stop_loss": "0.02",
+        "take_profit": "0.01",
+        "time_limit": 1800,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 20,
+        "atr_length": 12,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:54.635540"
+    },
+    {
+      "trial_number": 84,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.02,
+          0.03
+        ],
+        "sell_spreads": [
+          0.02,
+          0.03
+        ],
+        "stop_loss": "0.02",
+        "take_profit": "0.01",
+        "time_limit": 4500,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 20,
+        "atr_length": 12,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:54.670604"
+    },
+    {
+      "trial_number": 85,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.02,
+          0.03
+        ],
+        "sell_spreads": [
+          0.02,
+          0.03
+        ],
+        "stop_loss": "0.025",
+        "take_profit": "0.01",
+        "time_limit": 5400,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 20,
+        "atr_length": 12,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:54.706072"
+    },
+    {
+      "trial_number": 86,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.01,
+          0.02
+        ],
+        "sell_spreads": [
+          0.02,
+          0.04
+        ],
+        "stop_loss": "0.02",
+        "take_profit": "0.01",
+        "time_limit": 3600,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 20,
+        "atr_length": 12,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:54.741150"
+    },
+    {
+      "trial_number": 87,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.02,
+          0.04
+        ],
+        "sell_spreads": [
+          0.02,
+          0.04
+        ],
+        "stop_loss": "0.015",
+        "take_profit": "0.02",
+        "time_limit": 4500,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 20,
+        "atr_length": 12,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:54.776345"
+    },
+    {
+      "trial_number": 88,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.02,
+          0.03
+        ],
+        "sell_spreads": [
+          0.01,
+          0.02
+        ],
+        "stop_loss": "0.03",
+        "take_profit": "0.01",
+        "time_limit": 1800,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 14,
+        "atr_length": 10,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:54.811638"
+    },
+    {
+      "trial_number": 89,
+      "params": {
+        "controller_name": "pmm_bar_portion",
+        "connector_name": "binance_perpetual",
+        "trading_pair": "DOGE-USDT",
+        "total_amount_quote": "10000",
+        "buy_spreads": [
+          0.01,
+          0.03
+        ],
+        "sell_spreads": [
+          0.02,
+          0.04
+        ],
+        "stop_loss": "0.025",
+        "take_profit": "0.02",
+        "time_limit": 1800,
+        "candles_connector": "binance_perpetual",
+        "candles_trading_pair": "DOGE-USDT",
+        "interval": "1m",
+        "natr_length": 20,
+        "atr_length": 12,
+        "training_window": 60,
+        "take_profit_order_type": "OrderType.MARKET",
+        "buy_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "sell_amounts_pct": [
+          "0.5",
+          "0.5"
+        ],
+        "executor_refresh_time": 300
+      },
+      "result": {
+        "success": false,
+        "sharpe": 0.0,
+        "return": 0.0,
+        "total_pnl": 0.0,
+        "filled_count": 0,
+        "total_count": 0
+      },
+      "objective_value": -Infinity,
+      "timestamp": "2025-11-17T22:33:54.847202"
+    }
+  ]
+}
