@@ -15,7 +15,10 @@ sys.path.insert(0, str(project_root))
 from src.data.preprocessor import merge_exchange_data
 from src.strategies.timed_hedge_strategy import TimedHedgeStrategy
 from src.utils.path_manager import create_result_directory
-from src.analysis.visualization import plot_equity_curve, plot_drawdown, plot_trade_distribution
+from src.analysis.visualization import (
+    plot_equity_curve, plot_drawdown, plot_trade_distribution,
+    plot_comprehensive_analysis
+)
 
 
 def test_timed_hedge_strategy():
@@ -26,10 +29,11 @@ def test_timed_hedge_strategy():
     
     symbol = "AXSUSDT"
     end_date = datetime.now()
-    start_date = end_date - timedelta(days=3)
+    start_date = end_date - timedelta(days=10)  # 改为10天数据
     
     print(f"\n准备数据: {symbol}")
     print(f"时间范围: {start_date} 到 {end_date}")
+    print(f"数据天数: 10天")
     print(f"策略: 定时对冲（UTC时间 0点、8点、16点）")
     
     start_ts = int(start_date.timestamp() * 1000)
@@ -52,11 +56,13 @@ def test_timed_hedge_strategy():
             return False
         
         print(f"找到 {len(zip_files)} 个zip文件")
+        # 读取最近30天的文件以确保覆盖10天数据
+        print(f"读取最近30天的zip文件...")
         
         conn = duckdb.connect()
         all_binance_data = []
         
-        for zip_file in zip_files[-15:]:
+        for zip_file in zip_files[-30:]:  # 读取最近30天的文件
             try:
                 with zipfile.ZipFile(zip_file, 'r') as z:
                     csv_files = [f for f in z.namelist() if f.endswith('.csv')]
@@ -207,7 +213,8 @@ def test_timed_hedge_strategy():
             parameters={
                 "exposure": 50000,
                 "target_pct": 0.5,
-                "hedge_hours": strategy.hedge_hours
+                "hedge_hours": strategy.hedge_hours,
+                "days": 10
             }
         )
         
@@ -229,6 +236,17 @@ def test_timed_hedge_strategy():
         print("-" * 70)
         
         try:
+            # 生成综合分析图表
+            plot_comprehensive_analysis(
+                accounts=results["accounts"],
+                place_orders_stats=results["place_orders_stats"],
+                performance=performance,
+                title=f"{symbol} Comprehensive Backtest Analysis (Timed Hedge Strategy)",
+                save_path=str(manager.get_output_path("comprehensive_analysis.png"))
+            )
+            print(f"✅ 综合分析图表已保存")
+            
+            # 保留原有的单独图表（可选）
             plot_equity_curve(
                 results["accounts"],
                 title=f"{symbol} Equity Curve (Timed Hedge Strategy)",
@@ -270,3 +288,4 @@ if __name__ == "__main__":
     success = test_timed_hedge_strategy()
     sys.exit(0 if success else 1)
 
+参考数据说明 @DATA_STRUCTURE.md  我现在想根据kline和metric结合数据，构建一个CTA策略，策略思路就是 当 价格波动较大且交易额放大，同时3. `sum_open_interest` (DOUBLE) - 总持仓量单向 比骤然增大或减少时，同时伴随taker_buy_sell_ratio的异动变化，一般很有可能出现趋势行情，可以买入或者卖出。因此未来探索kline的return和交易量和sum_open_interest和taker_buy_sell_ratio关系很关键，kline是1分钟的，metrics数据是5min的频率，因此探索return必须是大于等于5分钟的return，那么采用q分位分箱的思路，探索 不同周期的return 和 交易量&sum_open_interest & taker_buy_sell_ratio，

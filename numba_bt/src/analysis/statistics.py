@@ -165,6 +165,22 @@ def analyze_performance(
                             if taker_volume > 0 else 0.0)
     actual_taker_fees = taker_fee[-1] if taker_fee.size > 0 else 0.0
     
+    # 10. 计算未平仓浮动盈亏（Unrealized PnL）
+    # 最终仓位和价格
+    final_pos = pos[-1] if pos.size > 0 else 0.0
+    final_price = trade_price[-1] if trade_price.size > 0 else 0.0
+    final_avg_cost_price = avg_cost_price[-1] if avg_cost_price.size > 0 else 0.0
+    
+    # 未平仓浮动盈亏 = 最终仓位 * (最终价格 - 平均成本价)
+    unrealized_pnl = final_pos * (final_price - final_avg_cost_price) if final_avg_cost_price > 0 else 0.0
+    
+    # 已实现PnL = Maker PnL + Taker PnL
+    realized_pnl_no_fee = maker_pnl_no_fee + taker_pnl_no_fee
+    
+    # 验证：total_pnl_no_fees 应该等于 realized_pnl_no_fee + unrealized_pnl（理论上）
+    # 但由于价格变化、其他交易类型等因素，可能不完全相等
+    pnl_reconciliation = total_pnl_no_fees - (realized_pnl_no_fee + unrealized_pnl)
+    
     # 10. 订单行为分析
     order_behavior_metrics = {}
     
@@ -413,11 +429,46 @@ def analyze_performance(
             'api_calls_per_minute': { 'mean': 0.0, 'median': 0.0, 'max': 0.0, 'min': 0.0 }
         }
     
-    # 11. 构建并返回结果字典
+    # 11. 资金费统计
+    funding_mask = order_role == 6  # info=6表示资金费支付
+    funding_fees = np.zeros(len(accounts_raw))
+    if np.any(funding_mask):
+        # 计算每次资金费支付（通过现金变化）
+        funding_indices = np.where(funding_mask)[0]
+        for idx in funding_indices:
+            if idx > 0:
+                # 资金费 = 前一个账户的现金 - 当前账户的现金
+                funding_fees[idx] = cash[idx-1] - cash[idx]
+            else:
+                # 第一条记录，无法计算变化
+                funding_fees[idx] = 0.0
+        
+        total_funding_fee = np.sum(funding_fees)
+        # 资金费收入（如果为负，表示支出；如果为正，表示收入）
+        funding_income = -total_funding_fee  # 取反，因为是从现金中扣除的
+        
+        # 计算资金费收入占比（相对于总PnL）
+        funding_income_ratio = (funding_income / total_pnl_with_fees * 100) if total_pnl_with_fees != 0 else 0.0
+        
+        # 计算资金费的交易额收益率（资金费收入 / 总交易额）
+        funding_return_rate = (funding_income / total_trade_value * 10000) if total_trade_value > 0 else 0.0  # 转换为万分之几
+    else:
+        total_funding_fee = 0.0
+        funding_income = 0.0
+        funding_income_ratio = 0.0
+        funding_return_rate = 0.0
+    
+    # 12. 构建并返回结果字典
     return {
         'overall_performance': {
             'total_pnl_with_fees': float(total_pnl_with_fees),
             'total_pnl_no_fees': float(total_pnl_no_fees),
+            'realized_pnl_no_fees': float(realized_pnl_no_fee),  # 已实现PnL = Maker + Taker
+            'unrealized_pnl_no_fees': float(unrealized_pnl),  # 未平仓浮动盈亏
+            'pnl_reconciliation': float(pnl_reconciliation),  # 差异（应该接近0，但可能由于其他交易类型有差异）
+            'final_position': float(final_pos),  # 最终仓位
+            'final_price': float(final_price),  # 最终价格
+            'final_avg_cost_price': float(final_avg_cost_price),  # 最终平均成本价
             'pnl_with_fees_ratio': float(pnl_with_fees_ratio),
             'pnl_no_fees_ratio': float(pnl_no_fees_ratio),
             'sharpe_ratio': float(sharpe_ratio),
@@ -442,6 +493,12 @@ def analyze_performance(
         },
         'fee_analysis': {
             'total_actual_fees': float(total_fee_cum[-1]) if total_fee_cum.size > 0 else 0.0
+        },
+        'funding_analysis': {
+            'total_funding_fee': float(total_funding_fee),
+            'funding_income': float(funding_income),
+            'funding_income_ratio': float(funding_income_ratio),  # 资金费收入占比（%）
+            'funding_return_rate': float(funding_return_rate)  # 资金费交易额收益率（bps）
         },
         'order_behavior_metrics': order_behavior_metrics
     }

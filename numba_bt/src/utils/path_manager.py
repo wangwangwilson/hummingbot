@@ -4,7 +4,26 @@ from datetime import datetime
 from typing import Optional, Literal, Tuple
 import json
 
-from ..const import RESULTS_PROD, RESULTS_TEST
+try:
+    from ..const import RESULTS_PROD, RESULTS_TEST
+except ImportError:
+    # 如果相对导入失败，尝试绝对导入
+    import sys
+    from pathlib import Path
+    project_root = Path(__file__).parent.parent.parent
+    if str(project_root) not in sys.path:
+        sys.path.insert(0, str(project_root))
+    try:
+        from src.const import RESULTS_PROD, RESULTS_TEST
+    except ImportError:
+        # 如果绝对导入也失败，使用importlib
+        import importlib.util
+        const_path = project_root / "src" / "const.py"
+        spec = importlib.util.spec_from_file_location("const", const_path)
+        const_module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(const_module)
+        RESULTS_PROD = const_module.RESULTS_PROD
+        RESULTS_TEST = const_module.RESULTS_TEST
 
 
 class ResultPathManager:
@@ -131,9 +150,27 @@ class ResultPathManager:
         Returns:
             保存的文件路径
         """
+        import numpy as np
+        
+        def convert_to_serializable(obj):
+            """递归转换numpy类型为Python原生类型"""
+            if isinstance(obj, np.integer):
+                return int(obj)
+            elif isinstance(obj, np.floating):
+                return float(obj)
+            elif isinstance(obj, np.ndarray):
+                return obj.tolist()
+            elif isinstance(obj, dict):
+                return {key: convert_to_serializable(value) for key, value in obj.items()}
+            elif isinstance(obj, (list, tuple)):
+                return [convert_to_serializable(item) for item in obj]
+            else:
+                return obj
+        
         output_path = self.get_output_path(filename)
+        serializable_results = convert_to_serializable(results)
         with open(output_path, 'w', encoding='utf-8') as f:
-            json.dump(results, f, indent=2, ensure_ascii=False)
+            json.dump(serializable_results, f, indent=2, ensure_ascii=False)
         
         return output_path
     

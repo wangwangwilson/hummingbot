@@ -1,0 +1,116 @@
+{
+  "overall_performance": {
+    "total_pnl_with_fees": 1294.6551691403147,
+    "total_pnl_no_fees": 2823.0152106786845,
+    "pnl_with_fees_ratio": 0.3951735047876778,
+    "pnl_no_fees_ratio": 0.8616818141726461,
+    "sharpe_ratio": 7.842102751680094,
+    "max_drawdown": 0.0006553712628058017,
+    "calmar_ratio": 79.98026056152933,
+    "annualized_return": 0.05241676436374654,
+    "duration_years": 0.025324683752883617
+  },
+  "maker_performance": {
+    "total_maker_pnl_no_fees": 6.068996666420773,
+    "maker_volume_total": 10227.425699999998,
+    "maker_pnl_ratio": 5.934041316399663,
+    "maker_pnl_pct_volume": 0.0005934041316399662,
+    "actual_maker_fees_cost_rebate": 0.511371285
+  },
+  "taker_performance": {
+    "total_taker_pnl_no_fees": 13233.513021197838,
+    "taker_volume_total": 10192476.085489325,
+    "taker_pnl_ratio": 12.98360958632803,
+    "taker_pnl_pct_volume": 0.0012983609586328028,
+    "actual_taker_fees_cost": -1528.871412823399
+  },
+  "fee_analysis": {
+    "total_actual_fees": -1528.360041538399
+  },
+  "order_behavior_metrics": {
+    "avg_fill_time_sec": 118.386,
+    "median_fill_time_sec": 118.386,
+    "avg_fill_rate": 0.5002531165346964,
+    "finish_all_pct": 0.5,
+    "finish_hit_pct": 1.0,
+    "buy_orders": {
+      "avg_fill_time_sec": 118.386,
+      "median_fill_time_sec": 118.386,
+      "avg_fill_rate": 0.5002531165346964,
+      "avg_slippage_pct": -0.00020565557681515977,
+      "median_slippage_pct": -0.00020565557681515977,
+      "total_slippage_value": 22.36049269662835,
+      "order_count": 2
+    },
+    "sell_orders": {},
+    "avg_slippage_pct": -0.00020565557681515977,
+    "total_slippage_value": 22.36049269662835,
+    "buy_api_stats_1min": {
+      "revoke_cnt": {
+        "mean": 1.2,
+        "median": 1.0,
+        "max": 2
+      },
+      "adj_price_cnt": {
+        "mean": 25.0,
+        "median": 19.0,
+        "max": 60
+      },
+      "desc_volume_cnt": {
+        "mean": 0.0,
+        "median": 0.0,
+        "max": 0
+      },
+      "asc_volume_cnt": {
+        "mean": 0.0,
+        "median": 0.0,
+        "max": 0
+      },
+      "order_count_mean": 1.4
+    },
+    "sell_api_stats_1min": {},
+    "api_calls_per_minute": {
+      "mean": 26.2,
+      "median": 20.0,
+      "max": 61.0,
+      "min": 1.0
+    }
+  },
+  "hedge_info": {
+    "hedge_hours": [
+      0,
+      8,
+      16
+    ],
+    "hedge_timestamps_count": 27,
+    "hedge_timestamps": [
+      1762646400000,
+      1762675200000,
+      1762704000000,
+      1762732800000,
+      1762761600000,
+      1762790400000,
+      1762819200000,
+      1762848000000,
+      1762876800000,
+      1762905600000,
+      1762934400000,
+      1762963200000,
+      1762992000000,
+      1763020800000,
+      1763049600000,
+      1763078400000,
+      1763107200000,
+      1763136000000,
+      1763164800000,
+      1763193600000,
+      1763222400000,
+      1763251200000,
+      1763280000000,
+      1763308800000,
+      1763337600000,
+      1763366400000,
+      1763395200000
+    ]
+  }
+}

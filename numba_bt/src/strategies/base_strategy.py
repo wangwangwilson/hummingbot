@@ -3,9 +3,35 @@ from abc import ABC, abstractmethod
 from typing import Dict, Any, Optional
 import numpy as np
 from pathlib import Path
+import sys
 
-from ..wrapper.backtester import MarketMakerBacktester
-from ..utils.params_manager import ParamsManager
+# 支持相对导入和绝对导入
+try:
+    from ..wrapper.backtester import MarketMakerBacktester
+    from ..utils.params_manager import ParamsManager
+except ImportError:
+    # 如果相对导入失败，尝试绝对导入
+    from pathlib import Path
+    project_root = Path(__file__).parent.parent.parent
+    if str(project_root) not in sys.path:
+        sys.path.insert(0, str(project_root))
+    try:
+        from src.wrapper.backtester import MarketMakerBacktester
+        from src.utils.params_manager import ParamsManager
+    except ImportError:
+        # 如果绝对导入也失败，使用importlib
+        import importlib.util
+        backtester_path = project_root / "src" / "wrapper" / "backtester.py"
+        spec = importlib.util.spec_from_file_location("backtester", backtester_path)
+        backtester_module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(backtester_module)
+        MarketMakerBacktester = backtester_module.MarketMakerBacktester
+        
+        params_manager_path = project_root / "src" / "utils" / "params_manager.py"
+        spec = importlib.util.spec_from_file_location("params_manager", params_manager_path)
+        params_manager_module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(params_manager_module)
+        ParamsManager = params_manager_module.ParamsManager
 
 
 class BaseStrategy(ABC):

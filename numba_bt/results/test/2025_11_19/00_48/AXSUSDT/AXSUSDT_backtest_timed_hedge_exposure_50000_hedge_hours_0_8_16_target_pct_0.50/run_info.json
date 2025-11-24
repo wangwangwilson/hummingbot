@@ -1,0 +1,17 @@
+{
+  "mode": "test",
+  "symbol": "AXSUSDT",
+  "experiment_name": "AXSUSDT_backtest_timed_hedge_exposure_50000_hedge_hours_0_8_16_target_pct_0.50",
+  "experiment_scenario": "timed_hedge",
+  "parameters": {
+    "exposure": 50000,
+    "target_pct": 0.5,
+    "hedge_hours": [
+      0,
+      8,
+      16
+    ]
+  },
+  "timestamp": "2025-11-19T00:48:59.738654",
+  "directory": "/home/wilson/hummingbot/numba_bt/results/test/2025_11_19/00_48/AXSUSDT/AXSUSDT_backtest_timed_hedge_exposure_50000_hedge_hours_0_8_16_target_pct_0.50"
+}

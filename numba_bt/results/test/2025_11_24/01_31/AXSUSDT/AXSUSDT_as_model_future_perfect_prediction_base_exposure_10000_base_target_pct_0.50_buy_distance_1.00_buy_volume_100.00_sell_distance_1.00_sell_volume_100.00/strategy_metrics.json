@@ -1,0 +1,76 @@
+{
+  "position_metrics": {
+    "max_position_value": 147602.40665048957,
+    "avg_position_value": 3964.0947562908837,
+    "min_position_value": 0.014057825106524804,
+    "long_short_ratio": 0.9277071910914786,
+    "long_time_pct": 49.705537728696484,
+    "short_time_pct": 50.294079355476086,
+    "neutral_time_pct": 0.00038291582744281154
+  },
+  "order_metrics": {
+    "place_order_count": 13326,
+    "revoke_order_count": 0,
+    "place_order_freq_per_hour": 18.508666510752594,
+    "revoke_order_freq_per_hour": 0.0,
+    "avg_place_interval_sec": 194.49029958724202,
+    "median_place_interval_sec": 53.593,
+    "avg_revoke_interval_sec": 0.0,
+    "median_revoke_interval_sec": 0.0
+  },
+  "trade_metrics": {
+    "total_trade_count": 247738,
+    "maker_trade_count": 84751,
+    "taker_trade_count": 162987,
+    "maker_taker_ratio": 0.5199862565726101,
+    "trade_long_short_ratio": 1.023626441771053,
+    "avg_fill_rate": 0.53280353942659,
+    "median_fill_rate": 1.0,
+    "min_fill_rate": 0.0,
+    "max_fill_rate": 1.0
+  },
+  "pnl_metrics": {
+    "long_pnl": -5261.5781567206595,
+    "short_pnl": 12758.310680799968,
+    "maker_pnl": -2624.6792790959066,
+    "taker_pnl": 13584.472099357168,
+    "total_pnl": 7484.0183685104375
+  },
+  "volume_metrics": {
+    "total_trade_value": 137358065.8776773,
+    "maker_trade_value": 7762709.678108246,
+    "taker_trade_value": 99206463.85499997,
+    "maker_taker_volume_ratio": 0.07824802312734593
+  },
+  "fee_metrics": {
+    "total_fee": -569402241.7608324,
+    "total_taker_fee": -614880937.3619227,
+    "total_maker_fee": 45478695.60109033,
+    "fee_to_volume_ratio_bps": -41453.86280175984
+  },
+  "slippage_metrics": {
+    "avg_slippage_pct": -0.04258552364984387,
+    "total_slippage_value": -3479.721793708336,
+    "median_slippage_pct": 0.0
+  },
+  "time_metrics": {
+    "start_time": "2025-09-01T08:00:00.286000",
+    "end_time": "2025-10-01T07:59:13.627000",
+    "duration_hours": 719.9870391666667
+  },
+  "performance_summary": {
+    "total_pnl_with_fees": -856.378367049494,
+    "total_pnl_no_fees": 3313.820000730462,
+    "max_drawdown_pct": 28.01803098274447,
+    "sharpe_ratio": -3.8860855701271295,
+    "calmar_ratio": -2.3691653500222514
+  },
+  "maker_performance": {
+    "maker_pnl_ratio_bps": 1.8801295661670985,
+    "maker_volume_total": 7762709.678108246
+  },
+  "taker_performance": {
+    "taker_pnl_ratio_bps": 2.1220905718058205,
+    "taker_volume_total": 30388892.34456902
+  }
+}

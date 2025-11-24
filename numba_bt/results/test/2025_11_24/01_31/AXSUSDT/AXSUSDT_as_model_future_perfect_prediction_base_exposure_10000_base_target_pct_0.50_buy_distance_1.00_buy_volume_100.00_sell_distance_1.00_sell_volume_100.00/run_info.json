@@ -1,0 +1,16 @@
+{
+  "mode": "test",
+  "symbol": "AXSUSDT",
+  "experiment_name": "AXSUSDT_as_model_future_perfect_prediction_base_exposure_10000_base_target_pct_0.50_buy_distance_1.00_buy_volume_100.00_sell_distance_1.00_sell_volume_100.00",
+  "experiment_scenario": "perfect_prediction",
+  "parameters": {
+    "base_exposure": 10000,
+    "base_target_pct": 0.5,
+    "buy_distance": 1.0,
+    "sell_distance": 1.0,
+    "buy_volume": 100.0,
+    "sell_volume": 100.0
+  },
+  "timestamp": "2025-11-24T01:31:23.062704",
+  "directory": "/home/wilson/hummingbot/numba_bt/results/test/2025_11_24/01_31/AXSUSDT/AXSUSDT_as_model_future_perfect_prediction_base_exposure_10000_base_target_pct_0.50_buy_distance_1.00_buy_volume_100.00_sell_distance_1.00_sell_volume_100.00"
+}

@@ -1,0 +1,115 @@
+{
+  "overall_performance": {
+    "total_pnl_with_fees": -14023.492083666823,
+    "total_pnl_no_fees": -9883.010797767985,
+    "pnl_with_fees_ratio": -1.0479971951348352,
+    "pnl_no_fees_ratio": -0.7385726418037757,
+    "sharpe_ratio": -1.6213267032350902,
+    "max_drawdown": 1.4023199857696607,
+    "calmar_ratio": NaN,
+    "annualized_return": NaN,
+    "duration_years": 0.08213404507947372
+  },
+  "maker_performance": {
+    "total_maker_pnl_no_fees": 825.2117647068958,
+    "maker_volume_total": 5251974.802926621,
+    "maker_pnl_ratio": 1.571240905891348,
+    "maker_pnl_pct_volume": 0.0001571240905891348,
+    "actual_maker_fees_cost_rebate": 262.598740146316
+  },
+  "taker_performance": {
+    "total_taker_pnl_no_fees": -2070.0090288374913,
+    "taker_volume_total": 29353866.840300962,
+    "taker_pnl_ratio": -0.705191258139627,
+    "taker_pnl_pct_volume": -7.05191258139627e-05,
+    "actual_taker_fees_cost": -4403.080026045148
+  },
+  "fee_analysis": {
+    "total_actual_fees": -4140.481285898832
+  },
+  "funding_analysis": {
+    "total_funding_fee": 1.1381706325852203,
+    "funding_income": -1.1381706325852203,
+    "funding_income_ratio": 0.008116171248892056,
+    "funding_return_rate": -8.505724704072869e-05
+  },
+  "order_behavior_metrics": {
+    "avg_fill_time_sec": 79.81529867248317,
+    "median_fill_time_sec": 41.837,
+    "avg_fill_rate": 0.9874861932608776,
+    "finish_all_pct": 0.9801812643375578,
+    "finish_hit_pct": 1.0,
+    "buy_orders": {
+      "avg_fill_time_sec": 76.61201671990092,
+      "median_fill_time_sec": 38.791,
+      "avg_fill_rate": 0.9884254523825046,
+      "avg_slippage_pct": -0.0006709351230600474,
+      "median_slippage_pct": 0.0,
+      "total_slippage_value": -2038.4432760195095,
+      "order_count": 30682
+    },
+    "sell_orders": {
+      "avg_fill_time_sec": 84.18343631111112,
+      "median_fill_time_sec": 45.891,
+      "avg_fill_rate": 0.9862053777777777,
+      "avg_slippage_pct": -0.0007562604286435172,
+      "median_slippage_pct": -2.0621012783369554e-16,
+      "total_slippage_value": -1675.0327266481581,
+      "order_count": 22500
+    },
+    "avg_slippage_pct": -0.0007070341673913638,
+    "total_slippage_value": -3713.4760026676677,
+    "buy_api_stats_1min": {
+      "revoke_cnt": {
+        "mean": 1.7337727468118642,
+        "median": 0.0,
+        "max": 483
+      },
+      "adj_price_cnt": {
+        "mean": 0.0,
+        "median": 0.0,
+        "max": 0
+      },
+      "desc_volume_cnt": {
+        "mean": 0.0,
+        "median": 0.0,
+        "max": 0
+      },
+      "asc_volume_cnt": {
+        "mean": 0.0,
+        "median": 0.0,
+        "max": 0
+      },
+      "order_count_mean": 3.172517552657974
+    },
+    "sell_api_stats_1min": {
+      "revoke_cnt": {
+        "mean": 5.923335357215139,
+        "median": 0.0,
+        "max": 434
+      },
+      "adj_price_cnt": {
+        "mean": 0.0,
+        "median": 0.0,
+        "max": 0
+      },
+      "desc_volume_cnt": {
+        "mean": 0.0,
+        "median": 0.0,
+        "max": 0
+      },
+      "asc_volume_cnt": {
+        "mean": 0.0,
+        "median": 0.0,
+        "max": 0
+      },
+      "order_count_mean": 6.814005262092694
+    },
+    "api_calls_per_minute": {
+      "mean": 5.564777574649604,
+      "median": 0.0,
+      "max": 500.0,
+      "min": 0.0
+    }
+  }
+}

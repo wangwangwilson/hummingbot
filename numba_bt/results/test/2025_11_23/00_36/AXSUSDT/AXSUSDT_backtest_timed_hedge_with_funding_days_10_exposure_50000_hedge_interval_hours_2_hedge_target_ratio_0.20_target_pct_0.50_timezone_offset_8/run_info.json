@@ -1,0 +1,16 @@
+{
+  "mode": "test",
+  "symbol": "AXSUSDT",
+  "experiment_name": "AXSUSDT_backtest_timed_hedge_with_funding_days_10_exposure_50000_hedge_interval_hours_2_hedge_target_ratio_0.20_target_pct_0.50_timezone_offset_8",
+  "experiment_scenario": "timed_hedge_with_funding",
+  "parameters": {
+    "exposure": 50000,
+    "target_pct": 0.5,
+    "hedge_target_ratio": 0.2,
+    "timezone_offset": 8,
+    "hedge_interval_hours": 2,
+    "days": 10
+  },
+  "timestamp": "2025-11-23T00:36:53.498099",
+  "directory": "/home/wilson/hummingbot/numba_bt/results/test/2025_11_23/00_36/AXSUSDT/AXSUSDT_backtest_timed_hedge_with_funding_days_10_exposure_50000_hedge_interval_hours_2_hedge_target_ratio_0.20_target_pct_0.50_timezone_offset_8"
+}

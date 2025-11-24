@@ -1,0 +1,14 @@
+{
+  "description": "TimedHedge: 定时对冲策略，在UTC时间 [0, 8, 16] 点将仓位对冲到0",
+  "metadata": {
+    "strategy_name": "TimedHedge",
+    "strategy_description": "定时对冲策略，在UTC时间 [0, 8, 16] 点将仓位对冲到0"
+  },
+  "parameters": {
+    "exposure": 50000,
+    "target_pct": 0.5,
+    "initial_cash": 1000000.0,
+    "initial_pos": 0.0,
+    "mini_price_step": 0.0001
+  }
+}

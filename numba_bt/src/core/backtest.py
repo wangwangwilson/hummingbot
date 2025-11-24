@@ -45,11 +45,22 @@ def _run_backtest_numba(
     # ---- 初始状态 ----
     initial_cash, initial_pos,
     # ---- 预分配的结果数组 ----
-    accounts_log, place_orders_stats_log
+    accounts_log, place_orders_stats_log,
+    # ---- 扩展点：定时对冲时间戳（毫秒），空数组或-1表示禁用
+    hedge_timestamps,
+    # ---- 扩展点：对冲目标比例数组（与hedge_timestamps对应），0表示对冲到0，0.2表示对冲到20%仓位
+    hedge_target_ratios,
+    # ---- 扩展点：资金费率数据 [[ts, funding_rate], ...]，空数组表示禁用
+    funding_rate_data
 ):
     """
-    使用 Numba JIT 编译的核心回测循环。
+    使用 Numba JIT 编译的核心回测循环，支持可选的扩展点（定时对冲、资金费率）。
     为了性能，此函数只使用 Numba 支持的类型（如 NumPy 数组和基本数据类型）。
+    
+    Args:
+        hedge_timestamps: 定时对冲时间戳数组（毫秒），空数组或-1表示禁用
+        hedge_target_ratios: 对冲目标比例数组（与hedge_timestamps对应），0表示对冲到0，0.2表示对冲到20%仓位
+        funding_rate_data: 资金费率数据 [[ts, funding_rate], ...]，空数组表示禁用
     """
     # 内部状态变量
     cash = initial_cash
@@ -73,10 +84,83 @@ def _run_backtest_numba(
     stats_idx = 0
 
     last_mark_price = data_feed[0, 2]
+    
+    # 定时对冲相关
+    hedge_idx = 0
+    hedge_enabled = hedge_timestamps.size > 0 and hedge_timestamps[0] >= 0
+    
+    # 资金费率相关
+    funding_idx = 0
+    funding_enabled = funding_rate_data.size > 0 and funding_rate_data.shape[0] > 0
+    last_funding_ts = -1  # 记录上次支付资金费的时间戳，避免重复支付
 
     for i in range(data_feed.shape[0]):
         line = data_feed[i]
         now_ts, order_side, trade_price, trade_quantity, mm_flag = line[0], line[1], line[2], line[3], line[4]
+
+        # 扩展点1: 检查定时对冲
+        if hedge_enabled and hedge_idx < hedge_timestamps.size:
+            if now_ts >= hedge_timestamps[hedge_idx]:
+                # 执行定时对冲：根据目标比例对冲仓位
+                target_ratio = hedge_target_ratios[hedge_idx] if hedge_target_ratios.size > hedge_idx else 0.0
+                target_pos = pos * target_ratio  # 目标仓位（带符号）
+                hedge_pos = pos - target_pos  # 需要对冲的仓位
+                
+                if abs(hedge_pos) > 1e-8:  # 需要对冲
+                    hedge_side = -np.sign(hedge_pos)
+                    hedge_volume = abs(hedge_pos)
+                    hedge_price = last_mark_price + hedge_side * mini_price_step * const_taker_step_size
+                    
+                    # 更新仓位和资金
+                    pos += hedge_side * hedge_volume
+                    cash -= hedge_side * hedge_volume * hedge_price
+                    taker_fee -= taker_fee_rate * hedge_volume * hedge_price
+                    
+                    # 更新成本价（如果对冲到0，重置成本价）
+                    if abs(pos) < 1e-8:
+                        avg_cost_price = 0.0
+                    elif abs(hedge_pos) > abs(pos) * 0.9:  # 对冲了大部分仓位，更新成本价
+                        avg_cost_price = hedge_price
+                    
+                    # 记录账户变化，info=5表示定时对冲
+                    accounts_log[accounts_idx] = [now_ts, cash, pos, avg_cost_price, hedge_price, hedge_volume, hedge_side, taker_fee, maker_fee, 5]
+                    accounts_idx += 1
+                    
+                    # 如果有挂单，先撤单
+                    if is_order_active:
+                        lifecycle_ms = now_ts - now_place_order[7]
+                        place_origin_volume = now_place_order[5] + now_place_order[3]
+                        place_orders_stats_log[stats_idx] = [now_place_order[7], lifecycle_ms, now_place_order[1], now_place_order[2], place_origin_volume, now_place_order[5], now_place_order[6], now_place_order[4], 5, 1, _adj_price_cnt, _desc_volume_cnt, _asc_volume_cnt]  # info=5表示定时对冲撤单
+                        stats_idx += 1
+                        is_order_active = False
+                        _adj_price_cnt, _desc_volume_cnt, _asc_volume_cnt = 0, 0, 0
+                
+                hedge_idx += 1
+                if hedge_idx >= hedge_timestamps.size:
+                    hedge_enabled = False
+        
+        # 扩展点2: 检查资金费率支付
+        if funding_enabled and funding_idx < funding_rate_data.shape[0]:
+            funding_ts = funding_rate_data[funding_idx, 0]
+            funding_rate = funding_rate_data[funding_idx, 1]
+            
+            if now_ts >= funding_ts and funding_ts > last_funding_ts:
+                # 计算资金费：资金费 = 仓位价值 * 资金费率
+                # 资金费率通常是每8小时支付一次，传入的funding_rate已经是每8小时的费率
+                pos_value_funding = pos * last_mark_price
+                funding_fee = pos_value_funding * funding_rate
+                
+                # 支付资金费（从现金中扣除）
+                cash -= funding_fee
+                
+                # 记录账户变化，info=6表示资金费支付
+                accounts_log[accounts_idx] = [now_ts, cash, pos, avg_cost_price, last_mark_price, 0.0, 0.0, taker_fee, maker_fee, 6]
+                accounts_idx += 1
+                
+                last_funding_ts = funding_ts
+                funding_idx += 1
+                if funding_idx >= funding_rate_data.shape[0]:
+                    funding_enabled = False
 
         # 1. 处理交易所的真实成交 (Taker Trade)
         # 只有当 mm_flag == 0 时，才处理为真实成交

@@ -1,0 +1,86 @@
+{
+  "overall_performance": {
+    "total_pnl_with_fees": 1824.2009446677985,
+    "total_pnl_no_fees": 3331.4552982030436,
+    "pnl_with_fees_ratio": 0.5594057433232772,
+    "pnl_no_fees_ratio": 1.021617291059416,
+    "sharpe_ratio": 12.254610298681891,
+    "max_drawdown": 0.0006779774653573661,
+    "calmar_ratio": 110.01098268462172,
+    "annualized_return": 0.07458496720199292,
+    "duration_years": 0.02533608848581641
+  },
+  "maker_performance": {
+    "total_maker_pnl_no_fees": 0.0,
+    "maker_volume_total": 0.0,
+    "maker_pnl_ratio": 0.0,
+    "maker_pnl_pct_volume": 0.0,
+    "actual_maker_fees_cost_rebate": 0.0
+  },
+  "taker_performance": {
+    "total_taker_pnl_no_fees": 13141.884181952966,
+    "taker_volume_total": 10048362.356901806,
+    "taker_pnl_ratio": 13.078632831076545,
+    "taker_pnl_pct_volume": 0.0013078632831076545,
+    "actual_taker_fees_cost": -1507.2543535352743
+  },
+  "fee_analysis": {
+    "total_actual_fees": -1507.2543535352743
+  },
+  "order_behavior_metrics": {
+    "avg_fill_time_sec": NaN,
+    "median_fill_time_sec": NaN,
+    "avg_fill_rate": NaN,
+    "finish_all_pct": NaN,
+    "finish_hit_pct": NaN,
+    "buy_orders": {},
+    "sell_orders": {},
+    "avg_slippage_pct": NaN,
+    "total_slippage_value": 0.0,
+    "buy_api_stats_1min": {},
+    "sell_api_stats_1min": {},
+    "api_calls_per_minute": {
+      "mean": 0.0,
+      "median": 0.0,
+      "max": 0.0,
+      "min": 0.0
+    }
+  },
+  "hedge_info": {
+    "hedge_hours": [
+      0,
+      8,
+      16
+    ],
+    "hedge_timestamps_count": 27,
+    "hedge_timestamps": [
+      1762646400000,
+      1762675200000,
+      1762704000000,
+      1762732800000,
+      1762761600000,
+      1762790400000,
+      1762819200000,
+      1762848000000,
+      1762876800000,
+      1762905600000,
+      1762934400000,
+      1762963200000,
+      1762992000000,
+      1763020800000,
+      1763049600000,
+      1763078400000,
+      1763107200000,
+      1763136000000,
+      1763164800000,
+      1763193600000,
+      1763222400000,
+      1763251200000,
+      1763280000000,
+      1763308800000,
+      1763337600000,
+      1763366400000,
+      1763395200000
+    ]
+  }
+}

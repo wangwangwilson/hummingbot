@@ -1,8 +1,27 @@
 """回测包装类，封装策略参数和执行逻辑"""
 import numpy as np
 from typing import Optional
+import sys
+from pathlib import Path
 
-from ..core.backtest import _run_backtest_numba
+# 支持相对导入和绝对导入
+try:
+    from ..core.backtest import _run_backtest_numba
+except ImportError:
+    # 如果相对导入失败，尝试绝对导入
+    project_root = Path(__file__).parent.parent.parent
+    if str(project_root) not in sys.path:
+        sys.path.insert(0, str(project_root))
+    try:
+        from src.core.backtest import _run_backtest_numba
+    except ImportError:
+        # 如果绝对导入也失败，使用importlib
+        import importlib.util
+        backtest_path = project_root / "src" / "core" / "backtest.py"
+        spec = importlib.util.spec_from_file_location("backtest", backtest_path)
+        backtest_module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(backtest_module)
+        _run_backtest_numba = backtest_module._run_backtest_numba
 
 
 class MarketMakerBacktester:
@@ -73,13 +92,22 @@ class MarketMakerBacktester:
         self.place_orders_stats = None
         
 
-    def run_backtest(self, data_feed: np.ndarray):
+    def run_backtest(
+        self, 
+        data_feed: np.ndarray,
+        hedge_timestamps: Optional[np.ndarray] = None,
+        hedge_target_ratios: Optional[np.ndarray] = None,
+        funding_rate_data: Optional[np.ndarray] = None
+    ):
         """
         执行回测。
 
         Args:
             data_feed (np.ndarray): 市场数据Numpy数组。
                                     结构: [timestamp, side, price, quantity, mm_flag]
+            hedge_timestamps: 定时对冲时间戳数组（毫秒），None或空数组表示禁用
+            hedge_target_ratios: 对冲目标比例数组，None或空数组表示禁用
+            funding_rate_data: 资金费率数据 [[ts, funding_rate], ...]，None或空数组表示禁用
         """
         if not isinstance(data_feed, np.ndarray):
             raise TypeError("输入数据必须是 NumPy 数组")
@@ -105,6 +133,14 @@ class MarketMakerBacktester:
         # 订单统计结构: [init_ts, lifecycle, price, side, origin_vol, finish_vol, avg_price, init_price, info, revoke_cnt, adj_price_cnt, desc_volume_cnt, asc_volume_cnt]
         place_orders_stats_log = np.zeros((len(data_feed), 13), dtype=np.float64)
 
+        # 准备扩展点参数
+        if hedge_timestamps is None:
+            hedge_timestamps = np.array([-1], dtype=np.int64)
+        if hedge_target_ratios is None:
+            hedge_target_ratios = np.array([0.0], dtype=np.float64)
+        if funding_rate_data is None:
+            funding_rate_data = np.array([]).reshape(0, 2)
+        
         print("开始执行Numba加速的回测循环...")
         # 调用Numba JIT函数
         accounts_count, stats_count = _run_backtest_numba(
@@ -119,7 +155,8 @@ class MarketMakerBacktester:
             self.taker_fee_rate, self.maker_fee_rate, self.open_ratio,
             self.enable_spl_taker,
             self.initial_cash, self.initial_pos,
-            accounts_log, place_orders_stats_log
+            accounts_log, place_orders_stats_log,
+            hedge_timestamps, hedge_target_ratios, funding_rate_data
         )
         print("回测循环执行完毕。")
 

@@ -1,0 +1,16 @@
+{
+  "mode": "test",
+  "symbol": "AXSUSDT",
+  "experiment_name": "AXSUSDT_momentum_mm_30s_return_exposure_10000_order_size_100.00_return_p20_-0.00_return_p80_0.00_spread_median_0.00_target_pct_0.50",
+  "experiment_scenario": "30s_return",
+  "parameters": {
+    "exposure": 10000,
+    "target_pct": 0.5,
+    "return_p20": -0.0008375209380233583,
+    "return_p80": 0.000824062628759695,
+    "spread_median": 0.00041876046901167917,
+    "order_size": 100.0
+  },
+  "timestamp": "2025-11-23T19:11:26.451375",
+  "directory": "/home/wilson/hummingbot/numba_bt/results/test/2025_11_23/19_11/AXSUSDT/AXSUSDT_momentum_mm_30s_return_exposure_10000_order_size_100.00_return_p20_-0.00_return_p80_0.00_spread_median_0.00_target_pct_0.50"
+}

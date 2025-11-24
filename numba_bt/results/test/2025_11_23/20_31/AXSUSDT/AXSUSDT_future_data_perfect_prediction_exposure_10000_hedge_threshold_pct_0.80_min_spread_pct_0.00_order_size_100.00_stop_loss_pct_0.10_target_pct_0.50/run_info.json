@@ -1,0 +1,16 @@
+{
+  "mode": "test",
+  "symbol": "AXSUSDT",
+  "experiment_name": "AXSUSDT_future_data_perfect_prediction_exposure_10000_hedge_threshold_pct_0.80_min_spread_pct_0.00_order_size_100.00_stop_loss_pct_0.10_target_pct_0.50",
+  "experiment_scenario": "perfect_prediction",
+  "parameters": {
+    "exposure": 10000,
+    "target_pct": 0.5,
+    "order_size": 100.0,
+    "min_spread_pct": 0.002,
+    "hedge_threshold_pct": 0.8,
+    "stop_loss_pct": 0.1
+  },
+  "timestamp": "2025-11-23T20:31:35.892866",
+  "directory": "/home/wilson/hummingbot/numba_bt/results/test/2025_11_23/20_31/AXSUSDT/AXSUSDT_future_data_perfect_prediction_exposure_10000_hedge_threshold_pct_0.80_min_spread_pct_0.00_order_size_100.00_stop_loss_pct_0.10_target_pct_0.50"
+}

@@ -1,0 +1,65 @@
+{
+  "overall_performance": {
+    "total_pnl_with_fees": 391.09888348006643,
+    "total_pnl_no_fees": 675.9222488127416,
+    "pnl_with_fees_ratio": 0.6465692855163375,
+    "pnl_no_fees_ratio": 1.1174426313639043,
+    "sharpe_ratio": 21.01490683576132,
+    "max_drawdown": 0.00021727947694735256,
+    "calmar_ratio": 294.806929050804,
+    "annualized_return": 0.06405549534461397,
+    "duration_years": 0.006297920342484853
+  },
+  "maker_performance": {
+    "total_maker_pnl_no_fees": 0.0,
+    "maker_volume_total": 0.0,
+    "maker_pnl_ratio": 0.0,
+    "maker_pnl_pct_volume": 0.0,
+    "actual_maker_fees_cost_rebate": 0.0
+  },
+  "taker_performance": {
+    "total_taker_pnl_no_fees": 2455.3071684574015,
+    "taker_volume_total": 1898822.4355511856,
+    "taker_pnl_ratio": 12.930683367161084,
+    "taker_pnl_pct_volume": 0.0012930683367161084,
+    "actual_taker_fees_cost": -284.8233653326781
+  },
+  "fee_analysis": {
+    "total_actual_fees": -284.8233653326781
+  },
+  "order_behavior_metrics": {
+    "avg_fill_time_sec": NaN,
+    "median_fill_time_sec": NaN,
+    "avg_fill_rate": NaN,
+    "finish_all_pct": NaN,
+    "finish_hit_pct": NaN,
+    "buy_orders": {},
+    "sell_orders": {},
+    "avg_slippage_pct": NaN,
+    "total_slippage_value": 0.0,
+    "buy_api_stats_1min": {},
+    "sell_api_stats_1min": {},
+    "api_calls_per_minute": {
+      "mean": 0.0,
+      "median": 0.0,
+      "max": 0.0,
+      "min": 0.0
+    }
+  },
+  "hedge_info": {
+    "hedge_hours": [
+      0,
+      8,
+      16
+    ],
+    "hedge_timestamps_count": 6,
+    "hedge_timestamps": [
+      1763251200000,
+      1763280000000,
+      1763308800000,
+      1763337600000,
+      1763366400000,
+      1763395200000
+    ]
+  }
+}
